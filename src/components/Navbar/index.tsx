@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
         {MenuItems.map((item, index) => {
           return (
             <li key={index}>
-              <NavItemLinks>{item.title}</NavItemLinks>
+              <NavItemLinks href={item.url}>{item.title}</NavItemLinks>
             </li>
           );
         })}

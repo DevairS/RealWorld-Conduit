@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 60px;
+  height: 70px;
 `;
 
 export const WrapperLogo = styled.div`
