@@ -34,6 +34,18 @@ export const Input = styled.input`
   }
 `;
 
+export const InputArea = styled.textarea`
+  padding: 15px;
+  margin: 0px;
+  border-radius: 16px;
+  outline: none;
+  margin-top: 10px;
+
+  &:hover {
+    border-color: #c2c2c2;
+  }
+`;
+
 export const TextErro = styled.p`
   font-size: 0.7rem;
 `;

@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { ResponseError } from '../utils';
+// import { ResponseError } from '../utils';
 
 const request = axios.create({
   baseURL: 'https://conduit.productionready.io/api',

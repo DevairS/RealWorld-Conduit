@@ -1,5 +1,4 @@
 import React from 'react';
-import ResponseError from '../../utils/entities/ResponseError';
 import { UserApi } from '../../api';
 import Register from './Register';
 import { schemaValidation } from './validation';
@@ -10,11 +9,10 @@ const RegisterContainer: React.FC = () => {
 
   const submit = async (user: UserRegister): Promise<void> => {
     try {
-      console.log('1');
       await userApi.createUser(user);
       showAlert({ message: 'Usuário criado com sucesso', type: 'success' });
     } catch (error) {
-      showAlert({ message: 'Erro ao executar o login', type: 'error' });
+      showAlert({ message: 'Erro ao cadastrar usuário', type: 'error' });
     }
   };
 

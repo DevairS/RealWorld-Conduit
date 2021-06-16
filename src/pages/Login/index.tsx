@@ -2,13 +2,14 @@ import React, { useContext } from 'react';
 import Login from './Login';
 import { schemaValidation } from './validation';
 import AuthContext from '../../Context/AuthContext';
+import showAlert from '../../utils/helpers/Alert';
 
 const LoginContainer: React.FC = () => {
   const { signIn } = useContext(AuthContext);
-  // await new Promise((resolve) => setTimeout(resolve, 500));
+
   const submit = async (values: UserLogin): Promise<void> => {
     try {
-      signIn(values);
+      await signIn(values);
     } catch (error) {
       console.log(error);
     }

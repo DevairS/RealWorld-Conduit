@@ -49,4 +49,8 @@ export const Button = styled.button`
   color: #fff;
   border-radius: 16px;
   width: 25%;
+  opacity: 1;
+  &:hover {
+    opacity: 0.5;
+  }
 `;

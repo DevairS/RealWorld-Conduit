@@ -19,10 +19,22 @@ export const TextSecondary = styled.a`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  width: 25%;
+  width: 50%;
 `;
 
 export const Input = styled.input`
+  padding: 15px;
+  margin: 0px;
+  border-radius: 16px;
+  outline: none;
+  margin-top: 10px;
+
+  &:hover {
+    border-color: #c2c2c2;
+  }
+`;
+
+export const InputArea = styled.textarea`
   padding: 15px;
   margin: 0px;
   border-radius: 16px;
