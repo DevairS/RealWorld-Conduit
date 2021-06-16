@@ -12,3 +12,18 @@ export const MenuItems = [
     url: '/register',
   },
 ];
+
+export const MenuItemsAuthenticated = [
+  {
+    title: 'Home',
+    url: '/',
+  },
+  {
+    title: 'New Article',
+    url: '/editor',
+  },
+  {
+    title: 'Settings',
+    url: '/settings',
+  },
+];

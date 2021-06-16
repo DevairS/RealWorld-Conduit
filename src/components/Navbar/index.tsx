@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   NavItemLinks,
   TextLogo,
@@ -6,22 +6,32 @@ import {
   WrapperItems,
   WrapperLogo,
 } from './styles';
-import { MenuItems } from './menuItems';
+import { MenuItems, MenuItemsAuthenticated } from './menuItems';
+import AuthContext from '../../Context/AuthContext';
 
 const Navbar: React.FC = () => {
+  const { authenticated } = useContext(AuthContext);
   return (
     <Wrapper>
       <WrapperLogo>
         <TextLogo>Conduit</TextLogo>
       </WrapperLogo>
       <WrapperItems>
-        {MenuItems.map((item, index) => {
-          return (
-            <li key={index}>
-              <NavItemLinks href={item.url}>{item.title}</NavItemLinks>
-            </li>
-          );
-        })}
+        {authenticated
+          ? MenuItemsAuthenticated.map((item, index) => {
+              return (
+                <li key={index}>
+                  <NavItemLinks href={item.url}>{item.title}</NavItemLinks>
+                </li>
+              );
+            })
+          : MenuItems.map((item, index) => {
+              return (
+                <li key={index}>
+                  <NavItemLinks href={item.url}>{item.title}</NavItemLinks>
+                </li>
+              );
+            })}
       </WrapperItems>
     </Wrapper>
   );

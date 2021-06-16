@@ -2,6 +2,6 @@ export enum Routes {
   HOME = '/',
   LOGIN = '/login',
   REGISTER = '/register',
-  SETTINGS = '/#/settings',
-  EDITOR = '/#/editor',
+  SETTINGS = '/settings',
+  EDITOR = '/editor',
 }

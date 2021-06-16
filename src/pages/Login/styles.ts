@@ -10,7 +10,11 @@ export const TextPrimary = styled.h2`
   font-weight: bold;
 `;
 
-export const TextSecondary = styled.h3``;
+export const TextSecondary = styled.a`
+  cursor: pointer;
+  text-decoration: none;
+  color: green;
+`;
 
 export const Form = styled.form`
   display: flex;

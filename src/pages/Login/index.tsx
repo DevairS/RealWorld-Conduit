@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Login from './Login';
 import { schemaValidation } from './validation';
+import AuthContext from '../../Context/AuthContext';
 
 const LoginContainer: React.FC = () => {
-  const submit = async (values: User): Promise<void> => {
+  const { signIn } = useContext(AuthContext);
+  // await new Promise((resolve) => setTimeout(resolve, 500));
+  const submit = async (values: UserLogin): Promise<void> => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      signIn(values);
     } catch (error) {
       console.log(error);
     }
-    console.log(values);
   };
 
   return <Login validationSchema={schemaValidation} submitForm={submit} />;

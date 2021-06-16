@@ -14,8 +14,8 @@ import {
 import { Navbar, Footer } from '../../components';
 
 type Props = {
-  validationSchema: SchemaOf<User>;
-  submitForm(value: User): Promise<void>;
+  validationSchema: SchemaOf<UserLogin>;
+  submitForm(value: UserLogin): Promise<void>;
 };
 
 const Login: React.FC<Props> = ({ validationSchema, submitForm }) => {
@@ -24,7 +24,7 @@ const Login: React.FC<Props> = ({ validationSchema, submitForm }) => {
       <Navbar />
       <Wrapper>
         <TextPrimary>Sign in</TextPrimary>
-        <TextSecondary>Need an account</TextSecondary>
+        <TextSecondary href="/register">Need an account</TextSecondary>
         <Formik
           initialValues={{ email: '', password: '' }}
           onSubmit={submitForm}

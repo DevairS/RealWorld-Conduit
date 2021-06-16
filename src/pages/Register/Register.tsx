@@ -15,8 +15,8 @@ import {
 } from './styles';
 
 type Props = {
-  validationSchema: SchemaOf<User>;
-  submitForm(value: User): Promise<void>;
+  validationSchema: SchemaOf<UserRegister>;
+  submitForm(value: UserRegister): Promise<void>;
 };
 
 const Register: React.FC<Props> = ({ validationSchema, submitForm }) => {
@@ -25,7 +25,7 @@ const Register: React.FC<Props> = ({ validationSchema, submitForm }) => {
       <Navbar />
       <Wrapper>
         <TextPrimary>Sign in</TextPrimary>
-        <TextSecondary>Have an account</TextSecondary>
+        <TextSecondary href="/login">Have an account</TextSecondary>
         <Formik
           initialValues={{ username: '', email: '', password: '' }}
           onSubmit={submitForm}
