@@ -8,25 +8,56 @@ import {
   WrapperGlobalFeed,
   WrapperMain,
   WrapperTags,
+  ButtonTags,
 } from './styles';
 
-const Home: React.FC = () => {
+type Props = {
+  articles?: ArticlesList;
+  tags?: TagsList;
+  user: User;
+};
+
+const Home: React.FC<Props> = ({ articles, tags, user }) => {
   return (
     <>
       <Navbar />
-      <WrapperBanner>
-        <TextMain>Conduit</TextMain>
-        <TextSecondary>A place to share your knowledge.</TextSecondary>
-      </WrapperBanner>
+      {user ? (
+        <div />
+      ) : (
+        <WrapperBanner>
+          <TextMain>Conduit</TextMain>
+          <TextSecondary>A place to share your knowledge.</TextSecondary>
+        </WrapperBanner>
+      )}
 
-      <WrapperMain>
-        <WrapperGlobalFeed>
-          {/* <Card userName="Devair" userText="TESTE TESTE TESTE" /> */}
-        </WrapperGlobalFeed>
-        <WrapperTags>
-          <p>tags aqui</p>
-        </WrapperTags>
-      </WrapperMain>
+      {articles ? (
+        <>
+          <WrapperMain>
+            <WrapperGlobalFeed>
+              {articles.articles.map((item, index) => {
+                return (
+                  <Card
+                    key={index}
+                    userName={item.author.username}
+                    userText1={item.title}
+                    userText2={item.description}
+                    userImg={item.author.image}
+                    createDate={item.createdAt}
+                    tags={item.tagList}
+                  />
+                );
+              })}
+            </WrapperGlobalFeed>
+            <WrapperTags>
+              {tags?.map((item, index) => {
+                return <ButtonTags key={index}>{item}</ButtonTags>;
+              })}
+            </WrapperTags>
+          </WrapperMain>
+        </>
+      ) : (
+        <h1>carregando...</h1>
+      )}
       <Footer />
     </>
   );

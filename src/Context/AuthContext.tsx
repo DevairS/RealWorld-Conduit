@@ -21,6 +21,7 @@ export const AuthProvider: React.FC = ({ children }) => {
       const userAuth = await userApi.authUser(user);
       localStorage.setItem('token', JSON.stringify(userAuth?.token));
       localStorage.setItem('user', JSON.stringify(userAuth));
+
       const storageUser = localStorage.getItem('user');
       if (storageUser) {
         setUser(JSON.parse(storageUser));

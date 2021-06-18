@@ -44,5 +44,4 @@ const tokenValidator = async (
 };
 
 request.interceptors.request.use(tokenValidator);
-
 export default request;

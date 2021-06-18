@@ -3,6 +3,7 @@ import request from '../request';
 
 class UserApi {
   createUser = async (user: UserRegister): Promise<void> => {
+    // ok
     try {
       await request.post('/users', {
         user,
@@ -13,6 +14,7 @@ class UserApi {
   };
 
   authUser = async (user: UserLogin): Promise<User> => {
+    // ok
     try {
       const { data } = await request.post('/users/login', {
         user,
@@ -43,6 +45,7 @@ class UserApi {
 
   // authentication no required
   listArticles = async (): Promise<ArticlesList> => {
+    // ok
     try {
       const { data } = await request.get('/articles');
       return data;
@@ -126,10 +129,11 @@ class UserApi {
   // favoriteArticle post/articles/:slug/favorite authentication required
 
   // No authetication required
-  getTags = async (): Promise<void> => {
+  getTags = async (): Promise<TagsList> => {
+    // ok
     try {
       const { data } = await request.get('/tags');
-      console.log('tags', data);
+      return data.tags;
     } catch (error) {
       throw new ResponseError(error);
     }

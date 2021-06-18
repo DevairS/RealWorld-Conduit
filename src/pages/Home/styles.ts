@@ -30,7 +30,6 @@ export const WrapperMain = styled.div`
 export const WrapperGlobalFeed = styled.div`
   display: flex;
   flex-direction: column;
-  width: 80%;
   margin-left: 20%;
   margin-right: 30px;
 `;
@@ -39,5 +38,22 @@ export const TextPreview = styled.p`
 `;
 export const WrapperTags = styled.div`
   display: flex;
-  width: 20%;
+  width: 25%;
+  background-color: #e4e8ec;
+  height: 200px;
+  flex-flow: row wrap;
+  margin-right: 3%;
+`;
+
+export const ButtonTags = styled.button`
+  border: 1px solid grey;
+  border-radius: 12px;
+  background-color: grey;
+  color: #fff;
+  margin: 4px;
+  opacity: 1;
+
+  &:hover {
+    opacity: 0.5;
+  }
 `;
