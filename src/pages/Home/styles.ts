@@ -24,17 +24,20 @@ export const TextSecondary = styled.p`
 export const WrapperMain = styled.div`
   display: flex;
   width: 100%;
+  margin-top: 40px;
 `;
 
 export const WrapperGlobalFeed = styled.div`
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  width: 80%;
   margin-left: 20%;
-  width: 50%;
+  margin-right: 30px;
 `;
 export const TextPreview = styled.p`
   font-size: 1.3rem;
 `;
 export const WrapperTags = styled.div`
   display: flex;
+  width: 20%;
 `;

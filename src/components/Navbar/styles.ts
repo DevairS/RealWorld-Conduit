@@ -18,7 +18,7 @@ export const TextLogo = styled.h1`
 
 export const WrapperItems = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: repeat(4, auto);
   grid-gap: 20px;
   list-style: none;
   text-align: center;

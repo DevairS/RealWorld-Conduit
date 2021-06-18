@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import Login from './Login';
 import { schemaValidation } from './validation';
 import AuthContext from '../../Context/AuthContext';
-import showAlert from '../../utils/helpers/Alert';
 
 const LoginContainer: React.FC = () => {
   const { signIn } = useContext(AuthContext);
