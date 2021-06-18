@@ -5,9 +5,9 @@ import { Home, Login, Register, Settings, Editor } from '../pages';
 import AuthContext from '../Context/AuthContext';
 
 const PrivateRoute = ({ component, ...rest }: any): any => {
-  const { authenticated } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const routerComponent = (props: any): any =>
-    authenticated ? (
+    user ? (
       React.createElement(component, props)
     ) : (
       <Redirect to={{ pathname: '/', state: { from: props.location } }} />
@@ -17,9 +17,9 @@ const PrivateRoute = ({ component, ...rest }: any): any => {
 };
 
 const LoggedRoute = ({ component, ...rest }: any): any => {
-  const { authenticated } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const routerComponent = (props: any): any =>
-    authenticated ? (
+    user ? (
       <Redirect to={{ pathname: '/', state: { from: props.location } }} />
     ) : (
       React.createElement(component, props)

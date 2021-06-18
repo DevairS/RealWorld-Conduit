@@ -12,7 +12,7 @@ import { UserApi } from '../../api';
 
 const Navbar: React.FC = () => {
   const userApi = new UserApi();
-  const { authenticated, handleLogout } = useContext(AuthContext);
+  const { user, handleLogout } = useContext(AuthContext);
 
   const testBuscaUser = async (): Promise<void> => {
     try {
@@ -27,7 +27,7 @@ const Navbar: React.FC = () => {
         <TextLogo>Conduit</TextLogo>
       </WrapperLogo>
       <WrapperItems>
-        {authenticated ? (
+        {user ? (
           <>
             {MenuItemsAuthenticated.map((item, index) => {
               return (
