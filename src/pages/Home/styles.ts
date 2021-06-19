@@ -24,7 +24,7 @@ export const TextSecondary = styled.p`
 export const WrapperMain = styled.div`
   display: flex;
   width: 100%;
-  margin-top: 40px;
+  margin-top: 80px;
 `;
 
 export const WrapperLeft = styled.div`

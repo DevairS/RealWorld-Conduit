@@ -42,6 +42,7 @@ export const InputArea = styled.textarea`
   outline: none;
   margin-top: 10px;
   border: 1px solid black;
+  resize: vertical;
 
   &:hover {
     border-color: #d6d8da;

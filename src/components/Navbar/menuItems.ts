@@ -4,11 +4,11 @@ export const MenuItems = [
     url: '/',
   },
   {
-    title: 'Sign in',
+    title: 'Login',
     url: '/login',
   },
   {
-    title: 'Sign up',
+    title: 'Cadastro',
     url: '/register',
   },
 ];
@@ -19,11 +19,11 @@ export const MenuItemsAuthenticated = [
     url: '/',
   },
   {
-    title: 'New Article',
+    title: 'Novo artigo',
     url: '/editor/',
   },
   {
-    title: 'Settings',
+    title: 'Conta',
     url: '/settings',
   },
 ];

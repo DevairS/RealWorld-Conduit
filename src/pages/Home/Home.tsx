@@ -16,7 +16,7 @@ import {
 type Props = {
   articles?: ArticlesList;
   tags?: TagsList;
-  user: User;
+  user?: User;
 };
 
 const Home: React.FC<Props> = ({ articles, tags, user }) => {
@@ -39,17 +39,15 @@ const Home: React.FC<Props> = ({ articles, tags, user }) => {
             <WrapperCenter>
               {articles.articles.map((item, index) => {
                 return (
-                  <>
-                    <Card
-                      key={index}
-                      userName={item.author.username}
-                      userText1={item.title}
-                      userText2={item.description}
-                      userImg={item.author.image}
-                      createDate={item.createdAt}
-                      tags={item.tagList}
-                    />
-                  </>
+                  <Card
+                    key={index}
+                    userName={item.author.username}
+                    userText1={item.title}
+                    userText2={item.description}
+                    userImg={item.author.image}
+                    createDate={item.createdAt}
+                    tags={item.tagList}
+                  />
                 );
               })}
             </WrapperCenter>

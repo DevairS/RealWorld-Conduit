@@ -44,6 +44,19 @@ class UserApi {
     }
   };
 
+  updateUser = async (user: UserUpdate): Promise<void> => {
+    // ok
+    try {
+      const { data } = await request.put('/user', user);
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
+      localStorage.setItem('user', JSON.stringify(data.user));
+      localStorage.setItem('token', JSON.stringify(data.user.token));
+    } catch (error) {
+      throw new ResponseError(error);
+    }
+  };
+
   // updateUser put/user authentication required
 
   // getProfile get/profiles:username authetication optional

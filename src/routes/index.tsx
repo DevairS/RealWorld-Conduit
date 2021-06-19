@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { Routes } from './routing';
-import { Home, Login, Register, Settings, Editor } from '../pages';
+import { Home, Login, Register, Account, Editor } from '../pages';
 import AuthContext from '../Context/AuthContext';
 
 const PrivateRoute = ({ component, ...rest }: any): any => {
@@ -36,7 +36,7 @@ const RoutesContainer: React.FC = () => {
         <LoggedRoute path={Routes.LOGIN} component={Login} />
         <LoggedRoute path={Routes.REGISTER} component={Register} />
         <PrivateRoute path={Routes.EDITOR} component={Editor} />
-        <PrivateRoute path={Routes.SETTINGS} component={Settings} />
+        <PrivateRoute path={Routes.ACCOUNT} component={Account} />
       </Switch>
     </BrowserRouter>
   );

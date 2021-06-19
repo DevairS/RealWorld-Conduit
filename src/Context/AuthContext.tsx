@@ -1,10 +1,9 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { UserApi } from '../api';
-import request from '../api/request';
 import showAlert from '../utils/helpers/Alert';
 
 interface AuthContextData {
-  user: User;
+  user?: User;
   signIn(user: UserLogin): Promise<void>;
   handleLogout(): void;
 }

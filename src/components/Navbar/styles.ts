@@ -17,22 +17,35 @@ export const TextLogo = styled.h1`
 `;
 
 export const WrapperItems = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, auto);
-  grid-gap: 20px;
+  display: flex;
   list-style: none;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const NavItemLinks = styled.a`
   cursor: pointer;
   text-decoration: none;
   color: #c3c3c3;
+  margin: 0px 10px;
   &:hover {
     color: #9b9b9b;
   }
 
   &:active {
     color: black;
+  }
+`;
+
+export const Button = styled.button`
+  background-color: green;
+  color: #fff;
+  padding: 5px;
+  opacity: 1;
+  border-radius: 12px;
+  width: 80px;
+
+  &:hover {
+    opacity: 0.5;
   }
 `;

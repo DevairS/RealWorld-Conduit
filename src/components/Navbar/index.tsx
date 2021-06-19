@@ -5,22 +5,14 @@ import {
   Wrapper,
   WrapperItems,
   WrapperLogo,
+  Button,
 } from './styles';
 import { MenuItems, MenuItemsAuthenticated } from './menuItems';
 import AuthContext from '../../Context/AuthContext';
-import { UserApi } from '../../api';
 
 const Navbar: React.FC = () => {
-  const userApi = new UserApi();
   const { user, handleLogout } = useContext(AuthContext);
 
-  const testBuscaUser = async (): Promise<void> => {
-    try {
-      await userApi.getUser();
-    } catch (error) {
-      console.log('funçao1', error);
-    }
-  };
   return (
     <Wrapper>
       <WrapperLogo>
@@ -36,12 +28,9 @@ const Navbar: React.FC = () => {
                 </li>
               );
             })}
-            <button type="button" onClick={handleLogout}>
+            <Button type="button" onClick={handleLogout}>
               Logout
-            </button>
-            <button type="button" onClick={testBuscaUser}>
-              busca user
-            </button>
+            </Button>
           </>
         ) : (
           MenuItems.map((item, index) => {

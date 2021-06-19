@@ -13,18 +13,23 @@ import {
 } from './styles';
 
 type Props = {
-  validationSchema: SchemaOf<UserLogin>;
-  submitForm(value: UserLogin): Promise<void>;
+  userLogged: UserUpdate;
+  validationSchema: SchemaOf<UserUpdate>;
+  submitForm(value: UserUpdate): Promise<void>;
 };
 
-const settings: React.FC<Props> = ({ validationSchema, submitForm }) => {
+const account: React.FC<Props> = ({
+  userLogged,
+  validationSchema,
+  submitForm,
+}) => {
   return (
     <>
       <Navbar />
       <Wrapper>
-        <p>Your Settings</p>
+        <p>Sua conta</p>
         <Formik
-          initialValues={{ email: '', password: '' }}
+          initialValues={userLogged}
           onSubmit={submitForm}
           validationSchema={validationSchema}
         >
@@ -34,54 +39,52 @@ const settings: React.FC<Props> = ({ validationSchema, submitForm }) => {
             return (
               <Form onSubmit={handleSubmit}>
                 <Input
-                  id="url"
-                  placeholder="URL of profile picture"
+                  id="image"
+                  placeholder="URL da sua foto de perfil"
                   type="text"
-                  value={values.email}
+                  value={values.image}
                   onChange={handleChange}
                   className={
-                    errors.email && touched.email
+                    errors.image && touched.image
                       ? 'text-input error'
                       : 'text-input'
                   }
                 />
-                {errors.email && touched.email && (
-                  <TextErro>{errors.email}</TextErro>
+                {errors.image && touched.image && (
+                  <TextErro>{errors.image}</TextErro>
                 )}
 
                 <Input
-                  id="email"
-                  placeholder="login"
+                  id="username"
+                  placeholder="Seu login"
                   type="text"
-                  value={values.email}
+                  value={values.username}
                   onChange={handleChange}
                   className={
-                    errors.email && touched.email
+                    errors.username && touched.username
                       ? 'text-input error'
                       : 'text-input'
                   }
                 />
-                {errors.email && touched.email && (
-                  <TextErro>{errors.email}</TextErro>
+                {errors.username && touched.username && (
+                  <TextErro>{errors.username}</TextErro>
                 )}
 
                 <InputArea
-                  id="email"
-                  placeholder="Short bio about you"
-                  value={values.email}
+                  id="bio"
+                  placeholder="Um breve biografia sobre você"
+                  value={values.bio}
                   onChange={handleChange}
                   className={
-                    errors.email && touched.email
+                    errors.bio && touched.bio
                       ? 'text-input error'
                       : 'text-input'
                   }
                 />
-                {errors.email && touched.email && (
-                  <TextErro>{errors.email}</TextErro>
-                )}
+                {errors.bio && touched.bio && <TextErro>{errors.bio}</TextErro>}
                 <Input
                   id="email"
-                  placeholder="email"
+                  placeholder="Seu email"
                   type="text"
                   value={values.email}
                   onChange={handleChange}
@@ -96,7 +99,7 @@ const settings: React.FC<Props> = ({ validationSchema, submitForm }) => {
                 )}
                 <Input
                   id="password"
-                  placeholder="password"
+                  placeholder="Nova senha"
                   type="password"
                   value={values.password}
                   onChange={handleChange}
@@ -110,7 +113,7 @@ const settings: React.FC<Props> = ({ validationSchema, submitForm }) => {
                   <TextErro>{errors.password}</TextErro>
                 )}
                 <WrapperButton>
-                  <Button type="submit">Update Settings</Button>
+                  <Button type="submit">Confirme as mudanças</Button>
                 </WrapperButton>
               </Form>
             );
@@ -122,4 +125,4 @@ const settings: React.FC<Props> = ({ validationSchema, submitForm }) => {
   );
 };
 
-export default settings;
+export default account;

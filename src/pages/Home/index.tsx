@@ -14,10 +14,9 @@ const HomeContainer: React.FC = () => {
   const searchArticles = async (): Promise<void> => {
     try {
       const response = await articleApi.listArticles();
-      console.log(response.articles);
       setArticles(response);
     } catch (error) {
-      console.log('Não buscou os artigos', error);
+      console.error(error);
     }
   };
 
@@ -26,7 +25,7 @@ const HomeContainer: React.FC = () => {
       const response = await tagApi.getTags();
       setTags(response);
     } catch (error) {
-      console.log('Error na busca das tags', error);
+      console.error(error);
     }
   };
 

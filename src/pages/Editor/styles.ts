@@ -53,6 +53,7 @@ export const InputArea = styled.textarea`
   outline: none;
   margin-top: 10px;
   border: 1px solid black;
+  resize: vertical;
 
   &:hover {
     border-color: #d6d8da;
@@ -87,6 +88,7 @@ export const TagInputWrapper = styled.div`
   border-radius: 16px;
   outline: none;
   margin-top: 10px;
+  align-items: center;
 
   &:hover {
     border-color: #d6d8da;
@@ -97,7 +99,7 @@ export const ListTags = styled.ul`
   display: flex;
   flex-wrap: wrap;
   padding: 0px;
-  margin: 8px 0px;
+  margin: 0px;
 `;
 
 export const ListItem = styled.li`
@@ -109,7 +111,7 @@ export const ListItem = styled.li`
   color: #fff;
   background-color: green;
   padding: 0px 8px;
-  margin: 0px 8px 0px 0px;
+  margin-left: 8px;
   border-radius: 12px;
   font-size: 14px;
   list-style: none;
