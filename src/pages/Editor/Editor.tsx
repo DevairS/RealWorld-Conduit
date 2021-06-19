@@ -119,7 +119,14 @@ const Editor: React.FC<Props> = ({
                 </TagInputWrapper>
 
                 <WrapperButton>
-                  <Button type="submit">Publica artigo</Button>
+                  <Button
+                    type="button"
+                    onClick={(e) => {
+                      return e ? handleSubmit() : null;
+                    }}
+                  >
+                    Publica artigo
+                  </Button>
                 </WrapperButton>
               </Form>
             );

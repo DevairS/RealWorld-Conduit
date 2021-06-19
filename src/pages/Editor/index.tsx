@@ -42,9 +42,12 @@ const EditorContainer: React.FC = () => {
   };
 
   const submit = async (values: ArticleCreate): Promise<void> => {
-    // try {
-    //   articleApi.createArticle('/articles', values);
-    // } catch (error) {}
+    try {
+      await articleApi.createArticle(values, tagsList);
+      showAlert({ message: 'Artigo publicado com sucesso', type: 'success' });
+    } catch (error) {
+      showAlert({ message: 'Error ao publicar o artigo', type: 'error' });
+    }
   };
 
   return (

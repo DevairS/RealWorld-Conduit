@@ -5,10 +5,12 @@ import {
   TextMain,
   TextSecondary,
   WrapperBanner,
-  WrapperGlobalFeed,
+  WrapperCenter,
   WrapperMain,
-  WrapperTags,
+  WrapperRight,
   ButtonTags,
+  WrapperLeft,
+  WrapperTags,
 } from './styles';
 
 type Props = {
@@ -33,26 +35,32 @@ const Home: React.FC<Props> = ({ articles, tags, user }) => {
       {articles ? (
         <>
           <WrapperMain>
-            <WrapperGlobalFeed>
+            <WrapperLeft />
+            <WrapperCenter>
               {articles.articles.map((item, index) => {
                 return (
-                  <Card
-                    key={index}
-                    userName={item.author.username}
-                    userText1={item.title}
-                    userText2={item.description}
-                    userImg={item.author.image}
-                    createDate={item.createdAt}
-                    tags={item.tagList}
-                  />
+                  <>
+                    <Card
+                      key={index}
+                      userName={item.author.username}
+                      userText1={item.title}
+                      userText2={item.description}
+                      userImg={item.author.image}
+                      createDate={item.createdAt}
+                      tags={item.tagList}
+                    />
+                  </>
                 );
               })}
-            </WrapperGlobalFeed>
-            <WrapperTags>
-              {tags?.map((item, index) => {
-                return <ButtonTags key={index}>{item}</ButtonTags>;
-              })}
-            </WrapperTags>
+            </WrapperCenter>
+            <WrapperRight>
+              <p>Populares Tags</p>
+              <WrapperTags>
+                {tags?.map((item, index) => {
+                  return <ButtonTags key={index}>{item}</ButtonTags>;
+                })}
+              </WrapperTags>
+            </WrapperRight>
           </WrapperMain>
         </>
       ) : (

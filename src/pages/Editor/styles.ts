@@ -30,13 +30,14 @@ export const Input = styled.input`
   border-radius: 16px;
   outline: none;
   margin-top: 10px;
-
+  border: 1px solid black;
   &:hover {
-    border-color: #c2c2c2;
+    border-color: #d6d8da;
   }
 `;
 
 export const InputTag = styled.input`
+  width: 30%;
   padding: 15px;
   margin: 0px;
   border: none;
@@ -51,9 +52,10 @@ export const InputArea = styled.textarea`
   border-radius: 16px;
   outline: none;
   margin-top: 10px;
+  border: 1px solid black;
 
   &:hover {
-    border-color: #c2c2c2;
+    border-color: #d6d8da;
   }
 `;
 
@@ -81,14 +83,13 @@ export const Button = styled.button`
 export const TagInputWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  padding: 0px 8px;
-  border: 1px solid #d6d8da;
+  border: 1px solid black;
   border-radius: 16px;
   outline: none;
   margin-top: 10px;
 
   &:hover {
-    border-color: #c2c2c2;
+    border-color: #d6d8da;
   }
 `;
 

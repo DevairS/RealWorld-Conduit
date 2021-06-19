@@ -28,9 +28,10 @@ export const Input = styled.input`
   border-radius: 16px;
   outline: none;
   margin-top: 10px;
+  border: 1px solid black;
 
   &:hover {
-    border-color: #c2c2c2;
+    border-color: #d6d8da;
   }
 `;
 

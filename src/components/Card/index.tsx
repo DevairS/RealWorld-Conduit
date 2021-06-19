@@ -21,7 +21,7 @@ type Props = {
   userName: string;
   userText1?: string;
   userText2?: string;
-  createDate?: string;
+  createDate: string;
   tags?: TagsList;
 };
 
@@ -33,6 +33,7 @@ const Card: React.FC<Props> = ({
   createDate,
   tags,
 }) => {
+  const date = createDate.split('T', 1);
   return (
     <Wrapper>
       <WrapperTop>
@@ -40,7 +41,7 @@ const Card: React.FC<Props> = ({
           <Image src={userImg} alt="imageUser" width="50" height="50" />
           <WrapperInfoUser>
             <UserName>{userName}</UserName>
-            <DateCreate>{createDate}</DateCreate>
+            <DateCreate>{date}</DateCreate>
           </WrapperInfoUser>
         </WrapperImage>
         <WrapperFavorite>

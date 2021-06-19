@@ -3,11 +3,12 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   display: flex;
   width: 100%;
-  height: 150px;
-  border: 1px solid black;
-  border-radius: 6px;
-  margin-bottom: 20px;
+  min-height: 150px;
   flex-direction: column;
+  border: 1px solid #c4c4c4;
+  &:hover {
+    background-color: #f5f5f5;
+  }
 `;
 
 export const WrapperTop = styled.div`
@@ -18,10 +19,11 @@ export const WrapperTop = styled.div`
 
 export const WrapperImage = styled.div`
   display: flex;
+  align-items: center;
 `;
 
 export const Image = styled.img`
-  border-radius: 40px;
+  border-radius: 50%;
 `;
 
 export const WrapperInfoUser = styled.div`
@@ -46,7 +48,7 @@ export const DateCreate = styled.p`
 export const WrapperBottom = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0px 10px;
+  margin: 0px 65px;
 `;
 
 export const TitleArticle = styled.p`

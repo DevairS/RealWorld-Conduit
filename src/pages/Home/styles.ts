@@ -27,22 +27,35 @@ export const WrapperMain = styled.div`
   margin-top: 40px;
 `;
 
-export const WrapperGlobalFeed = styled.div`
+export const WrapperLeft = styled.div`
+  display: flex;
+  width: 25%;
+`;
+
+export const WrapperCenter = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 20%;
-  margin-right: 30px;
+  width: 50%;
+  margin: 0% 2%;
 `;
 export const TextPreview = styled.p`
   font-size: 1.3rem;
 `;
+
+export const WrapperRight = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  margin-right: 5%;
+  background-color: #f5f5f5;
+  height: 250px;
+  border-radius: 16px;
+`;
+
 export const WrapperTags = styled.div`
   display: flex;
-  width: 25%;
-  background-color: #e4e8ec;
-  height: 200px;
   flex-flow: row wrap;
-  margin-right: 3%;
+  height: 200px;
 `;
 
 export const ButtonTags = styled.button`

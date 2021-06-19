@@ -7,6 +7,7 @@ declare type Article = {
   };
   body: string;
   description?: string;
+  slug: string;
   favorited: boolean;
   favoritesCount?: number;
   title: string;

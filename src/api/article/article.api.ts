@@ -11,6 +11,26 @@ class ArticleApi {
     return ArticleApi.instance;
   }
 
+  // Authentication required
+  createArticle = async (
+    article: ArticleCreate,
+    tags?: TagsList,
+  ): Promise<void> => {
+    try {
+      const articles = {
+        article: {
+          title: article.title,
+          description: article.description,
+          body: article.body,
+          tagList: [tags],
+        },
+      };
+      await request.post('/articles', articles);
+    } catch (error) {
+      throw new ResponseError(error);
+    }
+  };
+
   // authentication no required
   listArticles = async (): Promise<ArticlesList> => {
     // ok
@@ -36,23 +56,6 @@ class ArticleApi {
     try {
       const { data } = await request.get('/articles/:slug');
       console.log('data do getArticles', data);
-    } catch (error) {
-      throw new ResponseError(error);
-    }
-  };
-
-  // Authentication required
-  createArticle = async (): Promise<void> => {
-    try {
-      const response = await request.post('/articles', {
-        articles: {
-          title: 'oi sou Devair',
-          description: 'som teste',
-          body: 'huumm',
-          taglist: ['reactjs', 'typescript', 'lol'],
-        },
-      });
-      console.log('resposta createArticle:', response);
     } catch (error) {
       throw new ResponseError(error);
     }
