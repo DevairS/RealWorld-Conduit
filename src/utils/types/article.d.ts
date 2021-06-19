@@ -9,14 +9,20 @@ declare type Article = {
   description?: string;
   favorited: boolean;
   favoritesCount?: number;
-  slug: string;
   title: string;
   createdAt: string;
   updateAt: string;
-  tagList?: [string];
+  tagList?: TagList;
 }[];
 
 declare type ArticlesList = {
   articles: Article;
   articlesCount: number;
+};
+
+declare type ArticleCreate = {
+  title: string;
+  body: string;
+  description: string;
+  tagList?: TagList;
 };

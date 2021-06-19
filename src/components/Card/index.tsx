@@ -22,7 +22,7 @@ type Props = {
   userText1?: string;
   userText2?: string;
   createDate?: string;
-  tags?: [string];
+  tags?: TagsList;
 };
 
 const Card: React.FC<Props> = ({

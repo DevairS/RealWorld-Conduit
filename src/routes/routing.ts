@@ -3,5 +3,5 @@ export enum Routes {
   LOGIN = '/login',
   REGISTER = '/register',
   SETTINGS = '/settings',
-  EDITOR = '/editor',
+  EDITOR = '/editor/',
 }

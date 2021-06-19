@@ -1,1 +1,1 @@
-declare type TagsList = [];
+declare type TagsList = string[];

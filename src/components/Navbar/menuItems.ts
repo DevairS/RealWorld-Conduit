@@ -20,7 +20,7 @@ export const MenuItemsAuthenticated = [
   },
   {
     title: 'New Article',
-    url: '/editor',
+    url: '/editor/',
   },
   {
     title: 'Settings',

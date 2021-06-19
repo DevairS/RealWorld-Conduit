@@ -1,5 +1,5 @@
 import { Formik } from 'formik';
-import React from 'react';
+import React, { KeyboardEvent } from 'react';
 import { SchemaOf } from 'yup';
 import { Footer, Navbar } from '../../components';
 import {
@@ -10,21 +10,36 @@ import {
   TextErro,
   Wrapper,
   WrapperButton,
+  TagInputWrapper,
+  ListItem,
+  ListTags,
+  TagName,
+  InputTag,
+  TagDelete,
+  IconDelete,
 } from './styles';
 
 type Props = {
-  validationSchema: SchemaOf<UserLogin>;
-  submitForm(value: UserLogin): Promise<void>;
+  validationSchema: SchemaOf<ArticleCreate>;
+  submitForm(value: ArticleCreate): Promise<void>;
+  handleChangeTags(tag: KeyboardEvent<HTMLInputElement>): void;
+  tagsList: TagsList;
+  deleteTag(removeTagIndex: number): void;
 };
 
-const Editor: React.FC<Props> = ({ validationSchema, submitForm }) => {
+const Editor: React.FC<Props> = ({
+  validationSchema,
+  submitForm,
+  handleChangeTags,
+  tagsList,
+  deleteTag,
+}) => {
   return (
     <>
       <Navbar />
       <Wrapper>
-        <p>Your Settings</p>
         <Formik
-          initialValues={{ email: '', password: '' }}
+          initialValues={{ title: '', description: '', body: '' }}
           onSubmit={submitForm}
           validationSchema={validationSchema}
         >
@@ -34,68 +49,77 @@ const Editor: React.FC<Props> = ({ validationSchema, submitForm }) => {
             return (
               <Form onSubmit={handleSubmit}>
                 <Input
-                  id="url"
-                  placeholder="Article Title"
+                  id="title"
+                  placeholder="Artigo título"
                   type="text"
-                  value={values.email}
+                  value={values.title}
                   onChange={handleChange}
                   className={
-                    errors.email && touched.email
+                    errors.title && touched.title
                       ? 'text-input error'
                       : 'text-input'
                   }
                 />
-                {errors.email && touched.email && (
-                  <TextErro>{errors.email}</TextErro>
+                {errors.title && touched.title && (
+                  <TextErro>{errors.title}</TextErro>
                 )}
 
                 <Input
-                  id="email"
-                  placeholder="What's this article about"
+                  id="description"
+                  placeholder="Sobre o que é o artigo"
                   type="text"
-                  value={values.email}
+                  value={values.description}
                   onChange={handleChange}
                   className={
-                    errors.email && touched.email
+                    errors.description && touched.description
                       ? 'text-input error'
                       : 'text-input'
                   }
                 />
-                {errors.email && touched.email && (
-                  <TextErro>{errors.email}</TextErro>
+                {errors.description && touched.description && (
+                  <TextErro>{errors.description}</TextErro>
                 )}
 
                 <InputArea
-                  id="email"
-                  placeholder="write your article"
-                  value={values.email}
+                  id="body"
+                  placeholder="Escreva seu artigo"
+                  value={values.body}
                   onChange={handleChange}
                   className={
-                    errors.email && touched.email
+                    errors.body && touched.body
                       ? 'text-input error'
                       : 'text-input'
                   }
                 />
-                {errors.email && touched.email && (
-                  <TextErro>{errors.email}</TextErro>
+                {errors.body && touched.body && (
+                  <TextErro>{errors.body}</TextErro>
                 )}
-                <Input
-                  id="email"
-                  placeholder="Enter tags"
-                  type="text"
-                  value={values.email}
-                  onChange={handleChange}
-                  className={
-                    errors.email && touched.email
-                      ? 'text-input error'
-                      : 'text-input'
-                  }
-                />
-                {errors.email && touched.email && (
-                  <TextErro>{errors.email}</TextErro>
-                )}
+
+                <TagInputWrapper>
+                  <ListTags>
+                    {tagsList.map((item, index) => {
+                      return (
+                        <ListItem key={index}>
+                          <TagName>{item}</TagName>
+                          <TagDelete onClick={() => deleteTag(index)}>
+                            <IconDelete />
+                          </TagDelete>
+                        </ListItem>
+                      );
+                    })}
+                  </ListTags>
+
+                  <InputTag
+                    id="tag"
+                    placeholder="Adicione sua Tag separada por enter"
+                    onKeyUp={(e) => {
+                      return e.key === 'Enter' ? handleChangeTags(e) : null;
+                    }}
+                  />
+                </TagInputWrapper>
+
                 <WrapperButton>
-                  <Button type="submit">Publish Article</Button>
+                  <Button type="submit">Publica artigo</Button>
                 </WrapperButton>
               </Form>
             );
