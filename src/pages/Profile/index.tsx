@@ -1,38 +1,30 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Home from './Home';
-import { ArticleApi, TagApi } from '../../api';
+import Profile from './Profile';
 import AuthContext from '../../Context/AuthContext';
+import { ArticleApi } from '../../api';
 
-const HomeContainer: React.FC = () => {
-  const tagApi = TagApi.getInstance();
+const ProfileContainer: React.FC = () => {
   const articleApi = ArticleApi.getInstance();
-
+  const { user, handleLogout } = useContext(AuthContext);
   const [articles, setArticles] = useState<Article>();
-  const [tags, setTags] = useState<TagsList>();
-  const { user } = useContext(AuthContext);
 
-  const searchGlobalArticles = async (): Promise<void> => {
+  const searchMyArticles = async (): Promise<void> => {
     try {
-      const response = await articleApi.listArticles();
+      const response = await articleApi.listArticles({
+        author: user?.username,
+      });
       setArticles(response.articles);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const searchFeedArticles = async (): Promise<void> => {
+  const searchFavoritedArticles = async (): Promise<void> => {
     try {
-      const response = await articleApi.feedArticle();
+      const response = await articleApi.listArticles({
+        favorited: user?.username,
+      });
       setArticles(response.articles);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const searchTags = async (): Promise<void> => {
-    try {
-      const response = await tagApi.getTags();
-      setTags(response);
     } catch (error) {
       console.error(error);
     }
@@ -54,20 +46,18 @@ const HomeContainer: React.FC = () => {
   };
 
   useEffect(() => {
-    searchGlobalArticles();
-    searchTags();
+    searchMyArticles();
   }, []);
-
   return (
-    <Home
+    <Profile
       user={user}
+      handleLogout={handleLogout}
       articles={articles}
-      tags={tags}
-      searchFeedArticles={searchFeedArticles}
-      searchGlobalArticles={searchGlobalArticles}
+      searchMyArticles={searchMyArticles}
+      searchFavoritedArticles={searchFavoritedArticles}
       favoritedArticle={favoritedArticle}
     />
   );
 };
 
-export default HomeContainer;
+export default ProfileContainer;

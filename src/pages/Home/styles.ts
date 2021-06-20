@@ -38,8 +38,23 @@ export const WrapperCenter = styled.div`
   width: 50%;
   margin: 0% 2%;
 `;
-export const TextPreview = styled.p`
-  font-size: 1.3rem;
+
+export const WrapperSelect = styled.div`
+  display: flex;
+`;
+
+export const Select = styled.button`
+  cursor: pointer;
+  text-decoration: none;
+  color: #c3c3c3;
+  margin-right: 15px;
+  &:hover {
+    color: #9b9b9b;
+  }
+
+  &:active {
+    color: black;
+  }
 `;
 
 export const WrapperRight = styled.div`
@@ -67,6 +82,6 @@ export const ButtonTags = styled.button`
   opacity: 1;
 
   &:hover {
-    opacity: 0.5;
+    opacity: 0.8;
   }
 `;

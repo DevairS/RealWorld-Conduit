@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+interface PropsButtonFavorited {
+  favorited: boolean;
+}
 export const Wrapper = styled.div`
   display: flex;
   width: 100%;
@@ -70,4 +73,17 @@ export const Tag = styled.p`
   border: 1px solid grey;
   margin: 2px;
   padding: 1px;
+`;
+
+export const ButtonFavorited = styled.button<PropsButtonFavorited>`
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  background-color: ${(props) => (props.favorited ? 'green' : 'grey')};
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 1;
+  &:hover {
+    opacity: 0.8;
+  }
 `;

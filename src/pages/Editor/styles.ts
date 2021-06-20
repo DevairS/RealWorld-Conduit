@@ -77,7 +77,7 @@ export const Button = styled.button`
   width: 25%;
   opacity: 1;
   &:hover {
-    opacity: 0.5;
+    opacity: 0.8;
   }
 `;
 

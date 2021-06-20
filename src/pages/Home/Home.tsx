@@ -6,6 +6,8 @@ import {
   TextSecondary,
   WrapperBanner,
   WrapperCenter,
+  WrapperSelect,
+  Select,
   WrapperMain,
   WrapperRight,
   ButtonTags,
@@ -14,12 +16,22 @@ import {
 } from './styles';
 
 type Props = {
-  articles?: ArticlesList;
+  articles?: Article;
   tags?: TagsList;
   user?: User;
+  searchGlobalArticles(): void;
+  searchFeedArticles(): void;
+  favoritedArticle(slug: string, state: boolean): void;
 };
 
-const Home: React.FC<Props> = ({ articles, tags, user }) => {
+const Home: React.FC<Props> = ({
+  articles,
+  tags,
+  user,
+  searchFeedArticles,
+  searchGlobalArticles,
+  favoritedArticle,
+}) => {
   return (
     <>
       <Navbar />
@@ -37,7 +49,14 @@ const Home: React.FC<Props> = ({ articles, tags, user }) => {
           <WrapperMain>
             <WrapperLeft />
             <WrapperCenter>
-              {articles.articles.map((item, index) => {
+              <WrapperSelect>
+                <Select onClick={searchGlobalArticles}>Todos os Artigos</Select>
+                <Select onClick={searchFeedArticles}>
+                  Artigos do seu feed
+                </Select>
+              </WrapperSelect>
+              {articles.length ? <div /> : <p>Nenhum artigo aqui</p>}
+              {articles.map((item, index) => {
                 return (
                   <Card
                     key={index}
@@ -47,6 +66,10 @@ const Home: React.FC<Props> = ({ articles, tags, user }) => {
                     userImg={item.author.image}
                     createDate={item.createdAt}
                     tags={item.tagList}
+                    favorited={item.favorited}
+                    favoritesCount={item.favoritesCount}
+                    favoritedArticle={favoritedArticle}
+                    slug={item.slug}
                   />
                 );
               })}

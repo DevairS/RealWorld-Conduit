@@ -9,7 +9,7 @@ declare type Article = {
   description?: string;
   slug: string;
   favorited: boolean;
-  favoritesCount?: number;
+  favoritesCount: number;
   title: string;
   createdAt: string;
   updateAt: string;
@@ -26,4 +26,10 @@ declare type ArticleCreate = {
   body: string;
   description: string;
   tagList?: TagList;
+};
+
+declare type QueryArticles = {
+  author: string;
+  tag: string;
+  favorited: string;
 };

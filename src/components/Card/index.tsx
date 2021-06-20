@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
   Image,
@@ -14,6 +14,7 @@ import {
   DescriptionArticle,
   WrapperTags,
   Tag,
+  ButtonFavorited,
 } from './styles';
 
 type Props = {
@@ -23,6 +24,10 @@ type Props = {
   userText2?: string;
   createDate: string;
   tags?: TagsList;
+  favorited: boolean;
+  favoritesCount: number;
+  slug: string;
+  favoritedArticle(slug: string, state: boolean): void;
 };
 
 const Card: React.FC<Props> = ({
@@ -32,8 +37,27 @@ const Card: React.FC<Props> = ({
   userImg,
   createDate,
   tags,
+  favorited,
+  favoritesCount,
+  favoritedArticle,
+  slug,
 }) => {
   const date = createDate.split('T', 1);
+  const [favoritedState, setFavoritedState] = useState(favorited);
+  const [countFavorited, setCountFavorited] = useState(favoritesCount);
+
+  const handleChangeFavorited = (): void => {
+    favoritedArticle(slug, favoritedState);
+
+    if (favoritedState) {
+      setCountFavorited(countFavorited - 1);
+    } else {
+      setCountFavorited(countFavorited + 1);
+    }
+
+    setFavoritedState(!favoritedState);
+  };
+
   return (
     <Wrapper>
       <WrapperTop>
@@ -45,7 +69,12 @@ const Card: React.FC<Props> = ({
           </WrapperInfoUser>
         </WrapperImage>
         <WrapperFavorite>
-          <p>favorite</p>
+          <ButtonFavorited
+            onClick={handleChangeFavorited}
+            favorited={favoritedState}
+          >
+            {countFavorited}
+          </ButtonFavorited>
         </WrapperFavorite>
       </WrapperTop>
 

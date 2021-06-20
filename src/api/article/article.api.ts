@@ -32,21 +32,43 @@ class ArticleApi {
   };
 
   // authentication no required
-  listArticles = async (): Promise<ArticlesList> => {
+  listArticles = async (
+    query?: Partial<QueryArticles>,
+  ): Promise<ArticlesList> => {
     // ok
     try {
-      const { data } = await request.get('/articles');
+      const { data } = await request.get('/articles', {
+        params: query,
+      });
       return data;
     } catch (error) {
       throw new ResponseError(error);
     }
   };
 
-  // Authentication required
-  feedArticle = async (): Promise<void> => {
+  feedArticle = async (): Promise<ArticlesList> => {
+    // ok
     try {
       const { data } = await request.get('/articles/feed');
-      console.log('data do FeedArticles', data);
+      return data;
+    } catch (error) {
+      throw new ResponseError(error);
+    }
+  };
+
+  favoritedArticle = async (slug: string): Promise<void> => {
+    // ok
+    try {
+      await request.post(`/articles/${slug}/favorite`);
+    } catch (error) {
+      throw new ResponseError(error);
+    }
+  };
+
+  unfavoritedArticle = async (slug: string): Promise<void> => {
+    // ok
+    try {
+      await request.delete(`/articles/${slug}/favorite`);
     } catch (error) {
       throw new ResponseError(error);
     }

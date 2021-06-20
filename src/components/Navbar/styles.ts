@@ -46,6 +46,6 @@ export const Button = styled.button`
   width: 80px;
 
   &:hover {
-    opacity: 0.5;
+    opacity: 0.8;
   }
 `;

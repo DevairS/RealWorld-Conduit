@@ -11,7 +11,7 @@ import { MenuItems, MenuItemsAuthenticated } from './menuItems';
 import AuthContext from '../../Context/AuthContext';
 
 const Navbar: React.FC = () => {
-  const { user, handleLogout } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   return (
     <Wrapper>
@@ -28,9 +28,9 @@ const Navbar: React.FC = () => {
                 </li>
               );
             })}
-            <Button type="button" onClick={handleLogout}>
-              Logout
-            </Button>
+            <li>
+              <NavItemLinks href="/profile/">{user.username}</NavItemLinks>
+            </li>
           </>
         ) : (
           MenuItems.map((item, index) => {
