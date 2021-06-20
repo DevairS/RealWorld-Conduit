@@ -4,12 +4,12 @@ import { ArticleApi, TagApi } from '../../api';
 import AuthContext from '../../Context/AuthContext';
 
 const HomeContainer: React.FC = () => {
+  const { user } = useContext(AuthContext);
   const tagApi = TagApi.getInstance();
   const articleApi = ArticleApi.getInstance();
 
   const [articles, setArticles] = useState<Article>();
   const [tags, setTags] = useState<TagsList>();
-  const { user } = useContext(AuthContext);
 
   const searchGlobalArticles = async (): Promise<void> => {
     try {
@@ -53,6 +53,15 @@ const HomeContainer: React.FC = () => {
     }
   };
 
+  const changeArticles = async (tag: string): Promise<void> => {
+    try {
+      const response = await articleApi.listArticles({ tag });
+      setArticles(response.articles);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     searchGlobalArticles();
     searchTags();
@@ -66,6 +75,7 @@ const HomeContainer: React.FC = () => {
       searchFeedArticles={searchFeedArticles}
       searchGlobalArticles={searchGlobalArticles}
       favoritedArticle={favoritedArticle}
+      changeArticles={changeArticles}
     />
   );
 };

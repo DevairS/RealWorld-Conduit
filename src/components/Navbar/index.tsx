@@ -15,9 +15,11 @@ const Navbar: React.FC = () => {
 
   return (
     <Wrapper>
-      <WrapperLogo>
-        <TextLogo>Conduit</TextLogo>
-      </WrapperLogo>
+      <a href="/" style={{ textDecoration: 'none' }}>
+        <WrapperLogo>
+          <TextLogo>Conduit</TextLogo>
+        </WrapperLogo>
+      </a>
       <WrapperItems>
         {user ? (
           <>

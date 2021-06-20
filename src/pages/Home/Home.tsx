@@ -22,6 +22,7 @@ type Props = {
   searchGlobalArticles(): void;
   searchFeedArticles(): void;
   favoritedArticle(slug: string, state: boolean): void;
+  changeArticles(tag: string): void;
 };
 
 const Home: React.FC<Props> = ({
@@ -31,6 +32,7 @@ const Home: React.FC<Props> = ({
   searchFeedArticles,
   searchGlobalArticles,
   favoritedArticle,
+  changeArticles,
 }) => {
   return (
     <>
@@ -78,7 +80,14 @@ const Home: React.FC<Props> = ({
               <p>Populares Tags</p>
               <WrapperTags>
                 {tags?.map((item, index) => {
-                  return <ButtonTags key={index}>{item}</ButtonTags>;
+                  return (
+                    <ButtonTags
+                      onClick={() => changeArticles(item)}
+                      key={index}
+                    >
+                      {item}
+                    </ButtonTags>
+                  );
                 })}
               </WrapperTags>
             </WrapperRight>
