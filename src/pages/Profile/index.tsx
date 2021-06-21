@@ -8,7 +8,7 @@ const ProfileContainer: React.FC = () => {
   const articleApi = ArticleApi.getInstance();
   const profileApi = ProfileApi.getInstance();
 
-  const [articles, setArticles] = useState<Article>();
+  const [articles, setArticles] = useState<Articles>();
   const [profile, setProfile] = useState<Profile>();
 
   const { name } = useParams<ProfileRouteParams>();
@@ -23,7 +23,7 @@ const ProfileContainer: React.FC = () => {
       setProfile(profileResponse);
       await searchMyArticles(profileResponse);
     } catch (error) {
-      showAlert({ message: error.message, type: 'error' });
+      showAlert({ message: 'Perfil não encontrado', type: 'error' });
     }
   };
 
@@ -34,7 +34,7 @@ const ProfileContainer: React.FC = () => {
       });
       setArticles(response.articles);
     } catch (error) {
-      showAlert({ message: error.message, type: 'error' });
+      showAlert({ message: 'Artigo não encontrado', type: 'error' });
     }
   };
 
@@ -45,7 +45,10 @@ const ProfileContainer: React.FC = () => {
       });
       setArticles(response.articles);
     } catch (error) {
-      showAlert({ message: error.message, type: 'error' });
+      showAlert({
+        message: 'Erro ao buscar os artigos favoritos',
+        type: 'error',
+      });
     }
   };
 

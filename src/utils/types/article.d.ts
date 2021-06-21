@@ -13,11 +13,13 @@ declare type Article = {
   title: string;
   createdAt: string;
   updateAt: string;
-  tagList?: TagList;
-}[];
+  tagList?: TagList[];
+};
+
+declare type Articles = Article[];
 
 declare type ArticlesList = {
-  articles: Article;
+  articles: Articles;
   articlesCount: number;
 };
 
@@ -33,3 +35,22 @@ declare type QueryArticles = {
   tag: string;
   favorited: string;
 };
+
+declare type ArticleRouteParams = {
+  slug: string;
+};
+
+declare type NewComment = { body: string };
+
+declare type ArticleComment = {
+  author: {
+    username: string;
+    bio?: string;
+    following: boolean;
+    image: string;
+  };
+  body: string;
+  id: number;
+  createdAt: string;
+  updateAt: string;
+}[];

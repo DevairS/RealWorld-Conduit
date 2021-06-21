@@ -1,4 +1,5 @@
 import { ResponseError } from '../../utils';
+import showAlert from '../../utils/helpers/Alert';
 import request from '../request';
 
 class ArticleApi {
@@ -74,9 +75,30 @@ class ArticleApi {
     }
   };
 
-  getArticle = async (): Promise<void> => {
+  getArticle = async (slug: string): Promise<Article> => {
+    // ok
     try {
-      const { data } = await request.get('/articles/:slug');
+      const { data } = await request.get(`/articles/${slug}`);
+      return data.article;
+    } catch (error) {
+      throw new ResponseError(error);
+    }
+  };
+
+  getComments = async (slug: string): Promise<ArticleComment> => {
+    try {
+      const { data } = await request.get(`articles/${slug}/comments`);
+      return data.comments;
+    } catch (error) {
+      throw new ResponseError(error);
+    }
+  };
+
+  addComment = async (comment: NewComment, slug: string): Promise<void> => {
+    try {
+      await request.post(`articles/${slug}/comments`, {
+        comment,
+      });
     } catch (error) {
       throw new ResponseError(error);
     }

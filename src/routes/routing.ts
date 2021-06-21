@@ -5,4 +5,5 @@ export enum Routes {
   ACCOUNT = '/settings',
   EDITOR = '/editor',
   PROFILE = '/profile/:name',
+  ARTICLE = '/article/:slug',
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik } from 'formik';
 import { SchemaOf } from 'yup';
+import { Navbar, Footer } from '../../components';
 import {
   Button,
   Form,
@@ -11,7 +12,6 @@ import {
   Wrapper,
   WrapperButton,
 } from './styles';
-import { Navbar, Footer } from '../../components';
 
 type Props = {
   validationSchema: SchemaOf<UserLogin>;

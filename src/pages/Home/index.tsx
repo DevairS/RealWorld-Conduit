@@ -9,7 +9,7 @@ const HomeContainer: React.FC = () => {
   const tagApi = TagApi.getInstance();
   const articleApi = ArticleApi.getInstance();
 
-  const [articles, setArticles] = useState<Article>();
+  const [articles, setArticles] = useState<Articles>();
   const [tags, setTags] = useState<TagsList>();
 
   const searchGlobalArticles = async (): Promise<void> => {

@@ -16,7 +16,7 @@ import {
 
 type Props = {
   user?: Profile;
-  articles?: Article;
+  articles?: Articles;
   searchFavoritedArticles(): void;
   searchMyArticles(user?: Profile): void;
   favoritedArticle(slug: string, state: boolean): void;

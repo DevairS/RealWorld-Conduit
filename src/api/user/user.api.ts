@@ -57,27 +57,21 @@ class UserApi {
     }
   };
 
-  // updateUser put/user authentication required
+  followUser = async (user: string): Promise<void> => {
+    try {
+      await request.post(`/profiles/${user}/follow`);
+    } catch (error) {
+      throw new ResponseError(error);
+    }
+  };
 
-  // getProfile get/profiles:username authetication optional
-
-  // followUser post/profiles:username/follow authentication required
-
-  // unfollowUser delete/profiles:username/follow authentication required
-
-  // addComments post/articles/:slug/comments authentication required
-
-  // getComments get/articles/:slug/comments optional authentication required
-
-  // deleteComments delete/articles/:slug/comments/:id optional authentication required
-
-  // favoriteArticle post/articles/:slug/favorite authentication required
-
-  // unfavoriteArticle delete/articles/:slug/favorite authentication required
-
-  // favoriteArticle post/articles/:slug/favorite authentication required
-
-  // No authetication required
+  unfollowUser = async (user: string): Promise<void> => {
+    try {
+      await request.delete(`/profiles/${user}/follow`);
+    } catch (error) {
+      throw new ResponseError(error);
+    }
+  };
 }
 
 export default UserApi;

@@ -16,7 +16,7 @@ import {
 } from './styles';
 
 type Props = {
-  articles?: Article;
+  articles?: Articles;
   tags?: TagsList;
   user?: User;
   searchGlobalArticles(): void;
