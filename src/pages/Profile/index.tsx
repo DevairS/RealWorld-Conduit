@@ -1,32 +1,51 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Profile from './Profile';
-import AuthContext from '../../Context/AuthContext';
-import { ArticleApi } from '../../api';
+import { ArticleApi, ProfileApi } from '../../api';
+import showAlert from '../../utils/helpers/Alert';
 
 const ProfileContainer: React.FC = () => {
   const articleApi = ArticleApi.getInstance();
-  const { user, handleLogout } = useContext(AuthContext);
-  const [articles, setArticles] = useState<Article>();
+  const profileApi = ProfileApi.getInstance();
 
-  const searchMyArticles = async (): Promise<void> => {
+  const [articles, setArticles] = useState<Article>();
+  const [profile, setProfile] = useState<Profile>();
+
+  const { name } = useParams<ProfileRouteParams>();
+
+  useEffect(() => {
+    searchProfile();
+  }, []);
+
+  const searchProfile = async (): Promise<void> => {
+    try {
+      const profileResponse = await profileApi.getProfile(name);
+      setProfile(profileResponse);
+      await searchMyArticles(profileResponse);
+    } catch (error) {
+      showAlert({ message: error.message, type: 'error' });
+    }
+  };
+
+  const searchMyArticles = async (profile?: Profile): Promise<void> => {
     try {
       const response = await articleApi.listArticles({
-        author: user?.username,
+        author: profile?.username,
       });
       setArticles(response.articles);
     } catch (error) {
-      console.error(error);
+      showAlert({ message: error.message, type: 'error' });
     }
   };
 
   const searchFavoritedArticles = async (): Promise<void> => {
     try {
       const response = await articleApi.listArticles({
-        favorited: user?.username,
+        favorited: profile?.username,
       });
       setArticles(response.articles);
     } catch (error) {
-      console.error(error);
+      showAlert({ message: error.message, type: 'error' });
     }
   };
 
@@ -41,17 +60,13 @@ const ProfileContainer: React.FC = () => {
         await articleApi.favoritedArticle(slug);
       }
     } catch (error) {
-      console.error(error);
+      showAlert({ message: error.message, type: 'error' });
     }
   };
 
-  useEffect(() => {
-    searchMyArticles();
-  }, []);
   return (
     <Profile
-      user={user}
-      handleLogout={handleLogout}
+      user={profile}
       articles={articles}
       searchMyArticles={searchMyArticles}
       searchFavoritedArticles={searchFavoritedArticles}

@@ -4,6 +4,7 @@ import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 
 const request = axios.create({
   baseURL: 'https://conduit.productionready.io/api',
+  timeout: 30000,
 });
 
 const handleError = (error: AxiosResponse): FailValidationError => {

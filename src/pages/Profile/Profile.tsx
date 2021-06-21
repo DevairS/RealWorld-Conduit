@@ -15,17 +15,15 @@ import {
 } from './styles';
 
 type Props = {
-  user?: User;
-  handleLogout(): void;
+  user?: Profile;
   articles?: Article;
   searchFavoritedArticles(): void;
-  searchMyArticles(): void;
+  searchMyArticles(user?: Profile): void;
   favoritedArticle(slug: string, state: boolean): void;
 };
 
 const Profile: React.FC<Props> = ({
   user,
-  handleLogout,
   articles,
   searchFavoritedArticles,
   searchMyArticles,
@@ -42,20 +40,18 @@ const Profile: React.FC<Props> = ({
           <a href="/settings">
             <Button type="button">Edite seu perfil</Button>
           </a>
-          <Button type="button" onClick={handleLogout}>
-            Logout
-          </Button>
         </WrapperEdit>
       </WrapperUser>
       <WrapperArticles>
         <WrapperArticlesCenter>
           <WrapperSelect>
-            <Select onClick={searchMyArticles}>Meus Artigos</Select>
-            <Select onClick={searchFavoritedArticles}>
-              Meus Artigos favoritos
+            <Select onClick={() => searchMyArticles(user)}>
+              Artigos Publicados
             </Select>
+            <Select onClick={searchFavoritedArticles}>Artigos favoritos</Select>
           </WrapperSelect>
           <WrapperCard>
+            {articles?.length ? <div /> : <p>Nenhum artigo aqui</p>}
             {articles?.map((item, index) => {
               return (
                 <Card

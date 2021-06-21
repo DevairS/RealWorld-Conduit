@@ -11,7 +11,7 @@ import { MenuItems, MenuItemsAuthenticated } from './menuItems';
 import AuthContext from '../../Context/AuthContext';
 
 const Navbar: React.FC = () => {
-  const { user } = useContext(AuthContext);
+  const { user, handleLogout } = useContext(AuthContext);
 
   return (
     <Wrapper>
@@ -31,7 +31,9 @@ const Navbar: React.FC = () => {
               );
             })}
             <li>
-              <NavItemLinks href="/profile/">{user.username}</NavItemLinks>
+              <NavItemLinks href={`/profile/${user.username}`}>
+                {user.username}
+              </NavItemLinks>
             </li>
           </>
         ) : (
@@ -43,6 +45,9 @@ const Navbar: React.FC = () => {
             );
           })
         )}
+        <Button type="button" onClick={handleLogout}>
+          Logout
+        </Button>
       </WrapperItems>
     </Wrapper>
   );

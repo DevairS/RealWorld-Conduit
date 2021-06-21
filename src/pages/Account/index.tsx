@@ -19,7 +19,6 @@ const AccountContainer: React.FC = () => {
 
   const submit = async (user: UserUpdate): Promise<void> => {
     try {
-      console.log(user);
       userApi.updateUser(user);
       showAlert({
         message: 'Dados do seu usuário atualizado com sucesso',

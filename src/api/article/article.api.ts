@@ -77,7 +77,6 @@ class ArticleApi {
   getArticle = async (): Promise<void> => {
     try {
       const { data } = await request.get('/articles/:slug');
-      console.log('data do getArticles', data);
     } catch (error) {
       throw new ResponseError(error);
     }

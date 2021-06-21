@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import Home from './Home';
 import { ArticleApi, TagApi } from '../../api';
 import AuthContext from '../../Context/AuthContext';
+import showAlert from '../../utils/helpers/Alert';
 
 const HomeContainer: React.FC = () => {
   const { user } = useContext(AuthContext);
@@ -16,7 +17,7 @@ const HomeContainer: React.FC = () => {
       const response = await articleApi.listArticles();
       setArticles(response.articles);
     } catch (error) {
-      console.error(error);
+      showAlert({ message: error.message, type: 'error' });
     }
   };
 
@@ -25,7 +26,7 @@ const HomeContainer: React.FC = () => {
       const response = await articleApi.feedArticle();
       setArticles(response.articles);
     } catch (error) {
-      console.error(error);
+      showAlert({ message: error.message, type: 'error' });
     }
   };
 
@@ -34,7 +35,7 @@ const HomeContainer: React.FC = () => {
       const response = await tagApi.getTags();
       setTags(response);
     } catch (error) {
-      console.error(error);
+      showAlert({ message: error.message, type: 'error' });
     }
   };
 
@@ -49,7 +50,7 @@ const HomeContainer: React.FC = () => {
         await articleApi.favoritedArticle(slug);
       }
     } catch (error) {
-      console.error(error);
+      showAlert({ message: error.message, type: 'error' });
     }
   };
 
@@ -58,7 +59,7 @@ const HomeContainer: React.FC = () => {
       const response = await articleApi.listArticles({ tag });
       setArticles(response.articles);
     } catch (error) {
-      console.error(error);
+      showAlert({ message: error.message, type: 'error' });
     }
   };
 

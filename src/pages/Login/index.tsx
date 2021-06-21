@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Login from './Login';
 import { schemaValidation } from './validation';
 import AuthContext from '../../Context/AuthContext';
+import showAlert from '../../utils/helpers/Alert';
 
 const LoginContainer: React.FC = () => {
   const { signIn } = useContext(AuthContext);
@@ -10,7 +11,7 @@ const LoginContainer: React.FC = () => {
     try {
       await signIn(values);
     } catch (error) {
-      console.log(error);
+      showAlert({ message: error.message, type: 'error' });
     }
   };
 
