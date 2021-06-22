@@ -1,13 +1,15 @@
 import styled from 'styled-components';
+import { Favorite } from '@material-ui/icons';
 
 interface PropsButtonFavorited {
   favorited: boolean;
 }
 export const Wrapper = styled.div`
   display: flex;
-  width: 100%;
-  min-height: 150px;
   flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 180px;
   border-top: 1px solid ${(props) => props.theme.colors.secundary};
 `;
 
@@ -37,8 +39,9 @@ export const WrapperFavorite = styled.div`
 `;
 
 export const UserName = styled.p`
-  color: green;
+  color: ${(props) => props.theme.colors.primary};
   margin: 0px;
+  font-size: 1.2rem;
 `;
 
 export const DateCreate = styled.p`
@@ -60,6 +63,7 @@ export const WrapperBottom = styled.div`
 export const TitleArticle = styled.p`
   margin: 0px;
   font-weight: bold;
+  font-size: 1.4rem;
 `;
 
 export const DescriptionArticle = styled.p`
@@ -68,7 +72,7 @@ export const DescriptionArticle = styled.p`
 
 export const WrapperTags = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   margin: 0px 5px 5px 5px;
   align-items: center;
 `;
@@ -81,17 +85,27 @@ export const Tag = styled.p`
 `;
 
 export const ButtonFavorited = styled.button<PropsButtonFavorited>`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
   width: 40px;
-  height: 40px;
-  color: ${(props) => props.theme.colors.textReverse};
+  height: 30px;
+  color: ${(props) => (props.favorited ? '#fff' : props.theme.colors.primary)};
+  border: 1px solid ${(props) => props.theme.colors.primary};
   background-color: ${(props) =>
-    props.favorited ? '#49b675' : props.theme.colors.secundary};
-  border-radius: 30%;
+    props.favorited ? props.theme.colors.primary : '#fff'};
+
+  border-radius: 10%;
   cursor: pointer;
   opacity: 1;
   &:hover {
     opacity: 0.8;
   }
+`;
+export const FavoriteIcon = styled(Favorite)<PropsButtonFavorited>`
+  font-size: 1rem !important;
+  color: ${(props) =>
+    props.favorited ? '#fff' : props.theme.colors.primary} !important;
 `;
 
 export const Link = styled.a`

@@ -1,12 +1,9 @@
 import { Formik } from 'formik';
 import React, { KeyboardEvent } from 'react';
 import { SchemaOf } from 'yup';
-import { Footer, Navbar } from '../../components';
+import { Footer, Navbar, Input, Button, InputArea } from '../../components';
 import {
-  Button,
   Form,
-  Input,
-  InputArea,
   TextErro,
   Wrapper,
   WrapperButton,
@@ -54,11 +51,6 @@ const Editor: React.FC<Props> = ({
                   type="text"
                   value={values.title}
                   onChange={handleChange}
-                  className={
-                    errors.title && touched.title
-                      ? 'text-input error'
-                      : 'text-input'
-                  }
                 />
                 {errors.title && touched.title && (
                   <TextErro>{errors.title}</TextErro>
@@ -70,11 +62,6 @@ const Editor: React.FC<Props> = ({
                   type="text"
                   value={values.description}
                   onChange={handleChange}
-                  className={
-                    errors.description && touched.description
-                      ? 'text-input error'
-                      : 'text-input'
-                  }
                 />
                 {errors.description && touched.description && (
                   <TextErro>{errors.description}</TextErro>
@@ -85,11 +72,6 @@ const Editor: React.FC<Props> = ({
                   placeholder="Escreva seu artigo"
                   value={values.body}
                   onChange={handleChange}
-                  className={
-                    errors.body && touched.body
-                      ? 'text-input error'
-                      : 'text-input'
-                  }
                 />
                 {errors.body && touched.body && (
                   <TextErro>{errors.body}</TextErro>
@@ -121,12 +103,9 @@ const Editor: React.FC<Props> = ({
                 <WrapperButton>
                   <Button
                     type="button"
-                    onClick={(e) => {
-                      return e ? handleSubmit() : null;
-                    }}
-                  >
-                    Publica artigo
-                  </Button>
+                    text="Publica Artigo"
+                    onClick={handleSubmit}
+                  />
                 </WrapperButton>
               </Form>
             );

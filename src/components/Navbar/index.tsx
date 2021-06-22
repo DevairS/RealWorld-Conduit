@@ -8,8 +8,9 @@ import {
   Wrapper,
   WrapperItems,
   WrapperLogo,
-  Button,
 } from './styles';
+
+import { Button } from '../index';
 import { MenuItems, MenuItemsAuthenticated } from './menuItems';
 import AuthContext from '../../Context/AuthContext';
 
@@ -39,9 +40,7 @@ const Navbar: React.FC = () => {
                 {user.username}
               </NavItemLinks>
             </li>
-            <Button type="button" onClick={handleLogout}>
-              Logout
-            </Button>
+            <Button type="button" text="Logout" onClick={handleLogout} />
           </>
         ) : (
           MenuItems.map((item, index) => {

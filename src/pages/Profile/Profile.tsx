@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Footer, Navbar, Card } from '../../components';
 import {
   WrapperUser,
@@ -39,7 +39,7 @@ const Profile: React.FC<Props> = ({
     <>
       <Navbar />
       <WrapperUser>
-        <Image width="80" height="80" alt="imageUser" src={user?.image} />
+        <Image width="80" height="80" alt="User" src={user?.image} />
         <NameUser>{user?.username}</NameUser>
         <BioUser>{user?.bio}</BioUser>
         <WrapperEdit>
@@ -68,7 +68,11 @@ const Profile: React.FC<Props> = ({
             <Select onClick={searchFavoritedArticles}>Artigos favoritos</Select>
           </WrapperSelect>
           <WrapperCard>
-            {articles?.length ? <div /> : <p>Nenhum artigo aqui</p>}
+            {articles?.length ? (
+              <div />
+            ) : (
+              <p>Você ainda não possui nenhum artigo favorito</p>
+            )}
             {articles?.map((item, index) => {
               return (
                 <Card

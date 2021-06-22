@@ -56,9 +56,13 @@ const Home: React.FC<Props> = ({
             <WrapperCenter>
               <WrapperSelect>
                 <Select onClick={searchGlobalArticles}>Todos os Artigos</Select>
-                <Select onClick={searchFeedArticles}>
-                  Artigos do seu feed
-                </Select>
+                {user ? (
+                  <Select onClick={searchFeedArticles}>
+                    Artigos do seu feed
+                  </Select>
+                ) : (
+                  <div />
+                )}
               </WrapperSelect>
               {articles.length ? <div /> : <p>Nenhum artigo aqui</p>}
               {articles.map((item, index) => {
@@ -80,7 +84,7 @@ const Home: React.FC<Props> = ({
               })}
             </WrapperCenter>
             <WrapperRight>
-              <Title>Populares Tags</Title>
+              <Title>Tags Populares</Title>
               <WrapperTags>
                 {tags?.map((item, index) => {
                   return (

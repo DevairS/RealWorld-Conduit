@@ -2,15 +2,13 @@ export default {
   title: 'light',
 
   colors: {
-    primary: '#121212',
-    primaryHover: '#df886d',
-    secundary: '#ababab',
-    tertiary: '#5CB85C',
-
+    primary: '#5CB85C',
+    secundary: '#373a3c',
     background: '#fff',
-    backgroundHover: '#f5f5f5',
+    backgroundHover: '#f3f3f3',
+
     text: '#121212',
-    textReverse: '#fff',
-    textHover: '#ababab',
+    textLight: '#818a91',
+    textWhite: '#fff',
   },
 };

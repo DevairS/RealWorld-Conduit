@@ -1,12 +1,10 @@
 import { Formik } from 'formik';
 import React from 'react';
 import { SchemaOf } from 'yup';
-import { Navbar, Footer } from '../../components';
+import { Navbar, Footer, Input, Button } from '../../components';
 
 import {
-  Button,
   Form,
-  Input,
   TextErro,
   TextPrimary,
   TextSecondary,
@@ -42,11 +40,6 @@ const Register: React.FC<Props> = ({ validationSchema, submitForm }) => {
                   type="username"
                   value={values.username}
                   onChange={handleChange}
-                  className={
-                    errors.username && touched.username
-                      ? 'text-input error'
-                      : 'text-input'
-                  }
                 />
                 {errors.username && touched.username && (
                   <TextErro>{errors.username}</TextErro>
@@ -57,11 +50,6 @@ const Register: React.FC<Props> = ({ validationSchema, submitForm }) => {
                   type="text"
                   value={values.email}
                   onChange={handleChange}
-                  className={
-                    errors.email && touched.email
-                      ? 'text-input error'
-                      : 'text-input'
-                  }
                 />
                 {errors.email && touched.email && (
                   <TextErro>{errors.email}</TextErro>
@@ -72,18 +60,13 @@ const Register: React.FC<Props> = ({ validationSchema, submitForm }) => {
                   type="password"
                   value={values.password}
                   onChange={handleChange}
-                  className={
-                    errors.password && touched.password
-                      ? 'text-input error'
-                      : 'text-input'
-                  }
                 />
                 {errors.password && touched.password && (
                   <TextErro>{errors.password}</TextErro>
                 )}
 
                 <WrapperButton>
-                  <Button type="submit">Sign up</Button>
+                  <Button type="submit" text="Cadastrar" />
                 </WrapperButton>
               </Form>
             );

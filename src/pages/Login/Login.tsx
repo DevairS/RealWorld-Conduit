@@ -1,11 +1,9 @@
 import React from 'react';
 import { Formik } from 'formik';
 import { SchemaOf } from 'yup';
-import { Navbar, Footer } from '../../components';
+import { Navbar, Footer, Input, Button } from '../../components';
 import {
-  Button,
   Form,
-  Input,
   TextErro,
   TextPrimary,
   TextSecondary,
@@ -43,32 +41,23 @@ const Login: React.FC<Props> = ({ validationSchema, submitForm }) => {
                   type="text"
                   value={values.email}
                   onChange={handleChange}
-                  className={
-                    errors.email && touched.email
-                      ? 'text-input error'
-                      : 'text-input'
-                  }
                 />
                 {errors.email && touched.email && (
                   <TextErro>{errors.email}</TextErro>
                 )}
+
                 <Input
                   id="password"
                   placeholder="password"
                   type="password"
                   value={values.password}
                   onChange={handleChange}
-                  className={
-                    errors.password && touched.password
-                      ? 'text-input error'
-                      : 'text-input'
-                  }
                 />
                 {errors.password && touched.password && (
                   <TextErro>{errors.password}</TextErro>
                 )}
                 <WrapperButton>
-                  <Button type="submit">Cadastrar</Button>
+                  <Button type="submit" text="Entrar" />
                 </WrapperButton>
               </Form>
             );

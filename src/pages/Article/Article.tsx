@@ -1,12 +1,14 @@
 import React from 'react';
 import { Formik } from 'formik';
 import { SchemaOf } from 'yup';
-import { Footer, Navbar } from '../../components';
+import { Footer, Navbar, Button } from '../../components';
 import {
   WrapperTop,
   Image,
-  Button,
+  ButtonFollow,
+  ButtonFavorited,
   WrapperFollow,
+  WrapperFollow2,
   ArticleTitle,
   Author,
   WrapperBottom,
@@ -21,6 +23,7 @@ import {
   Input,
   TextErro,
   WrapperButton,
+  Body,
 } from './styles';
 
 type Props = {
@@ -38,6 +41,7 @@ const Article: React.FC<Props> = ({
   submitForm,
   validationSchema,
 }) => {
+  const date = article?.createdAt.split('T', 1);
   return (
     <>
       <Navbar />
@@ -50,15 +54,21 @@ const Article: React.FC<Props> = ({
             height="40"
             alt="imageAuthor"
           />
-          <Author>{article?.author.username}</Author>
-
-          <Button type="button">Seguir {article?.author.username}</Button>
-          <Button type="button">Favorita Artigo</Button>
+          <div>
+            <Author href={`/profile/${article?.author.username}`}>
+              {article?.author.username}
+            </Author>
+            <p>{date}</p>
+          </div>
+          <ButtonFollow type="button">
+            Seguir {article?.author.username}
+          </ButtonFollow>
+          <ButtonFavorited type="button">Favorita Artigo</ButtonFavorited>
         </WrapperFollow>
       </WrapperTop>
       <WrapperBottom>
         <WrapperContent>
-          <p>{article?.title}</p>
+          <Body>{article?.body}</Body>
           <WrapperTags>
             {article?.tagList?.map((item, index) => {
               return <Tag key={index}>{item}</Tag>;
@@ -69,7 +79,6 @@ const Article: React.FC<Props> = ({
             <Formik
               initialValues={{ body: '' }}
               onSubmit={async (values) => submitForm(values, article?.slug)}
-              validationSchema={validationSchema}
             >
               {(props) => {
                 const { values, touched, errors, handleChange, handleSubmit } =
@@ -79,7 +88,6 @@ const Article: React.FC<Props> = ({
                     <Input
                       id="body"
                       placeholder="Faça seu comentário sobre esse artigo"
-                      type="text"
                       value={values.body}
                       onChange={handleChange}
                       className={
@@ -92,7 +100,7 @@ const Article: React.FC<Props> = ({
                       <TextErro>{errors.body}</TextErro>
                     )}
                     <WrapperButton>
-                      <Button type="submit">Cadastrar</Button>
+                      <Button type="submit" text="Comentar" />
                     </WrapperButton>
                   </Form>
                 );
@@ -102,28 +110,16 @@ const Article: React.FC<Props> = ({
             {comments?.map((item, index) => {
               return (
                 <WrapperComment key={index}>
+                  <Input value={item.body} />
                   <WrapperAuthorComment>
                     <Image
                       src={item.author.image}
+                      alt="userComent"
                       width="20"
                       height="20"
-                      alt="imageAuthor"
                     />
-                    <p>{item.author.username}</p>
-
-                    <Button
-                      type="button"
-                      onClick={() => {
-                        handleChangeFollow(
-                          item.author.username,
-                          item.author.following,
-                        );
-                      }}
-                    >
-                      Seguir
-                    </Button>
+                    {item.author.username}
                   </WrapperAuthorComment>
-                  <p>{item.body}</p>
                 </WrapperComment>
               );
             })}

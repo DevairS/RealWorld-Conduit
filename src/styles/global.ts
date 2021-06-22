@@ -11,7 +11,10 @@ export default createGlobalStyle`
     background: ${(props) => props.theme.colors.background};
     font-size: 14px;
     color: ${(props) => props.theme.colors.text};
-    font-family: sans-serif;
+    font-family: "Source Sans Pro", sans-serif;
   }
 
+  textarea, input {
+    font-family: "Source Sans Pro", sans-serif;
+  }
 `;

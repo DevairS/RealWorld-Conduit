@@ -25,18 +25,6 @@ export const Form = styled.form`
   width: 50%;
 `;
 
-export const Input = styled.input`
-  padding: 15px;
-  margin: 0px;
-  border-radius: 16px;
-  outline: none;
-  margin-top: 10px;
-  border: 1px solid black;
-  &:hover {
-    border-color: #d6d8da;
-  }
-`;
-
 export const InputTag = styled.input`
   width: 30%;
   padding: 15px;
@@ -45,20 +33,6 @@ export const InputTag = styled.input`
   border-radius: 16px;
   outline: none;
   background: transparent;
-`;
-
-export const InputArea = styled.textarea`
-  padding: 15px;
-  margin: 0px;
-  border-radius: 16px;
-  outline: none;
-  margin-top: 10px;
-  border: 1px solid black;
-  resize: vertical;
-
-  &:hover {
-    border-color: #d6d8da;
-  }
 `;
 
 export const TextErro = styled.p`
@@ -70,28 +44,15 @@ export const WrapperButton = styled.div`
   justify-content: flex-end;
 `;
 
-export const Button = styled.button`
-  margin-top: 10px;
-  padding: 15px;
-  background-color: ${(props) => props.theme.colors.secundary};
-  color: ${(props) => props.theme.colors.textReverse};
-  border: none;
-  border-radius: 16px;
-  width: 25%;
-  opacity: 1;
-  &:hover {
-    opacity: 0.7;
-  }
-`;
-
 export const TagInputWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  border: 1px solid black;
-  border-radius: 16px;
+  align-items: center;
+  margin: 0px;
+  border-radius: 5px;
   outline: none;
   margin-top: 10px;
-  align-items: center;
+  border: 1px solid ${(props) => props.theme.colors.secundary};
 
   &:hover {
     border-color: #d6d8da;
@@ -111,8 +72,8 @@ export const ListItem = styled.li`
   align-items: center;
   width: auto;
   height: 32px;
-  color: ${(props) => props.theme.colors.textReverse};
-  background-color: ${(props) => props.theme.colors.secundary};
+  color: ${(props) => props.theme.colors.textWhite};
+  background-color: ${(props) => props.theme.colors.textLight};
   padding: 0px 8px;
   margin-left: 8px;
   border-radius: 12px;

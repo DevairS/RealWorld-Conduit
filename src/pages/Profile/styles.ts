@@ -2,12 +2,12 @@ import styled from 'styled-components';
 
 export const WrapperUser = styled.div`
   display: flex;
-  background-color: ${(props) => props.theme.colors.background};
+  background-color: ${(props) => props.theme.colors.backgroundHover};
   height: 250px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 60px;
+  margin-bottom: 50px;
 `;
 
 export const Image = styled.img`
@@ -17,22 +17,33 @@ export const Image = styled.img`
 export const NameUser = styled.h3`
   font-weight: bold;
   margin: 0px;
+  font-size: 1.4rem;
 `;
 
 export const BioUser = styled.p`
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   margin: 0px;
 `;
 
 export const WrapperEdit = styled.div`
   display: flex;
-  width: 80%;
+  width: 60%;
+  margin-top: 20px;
   justify-content: flex-end;
 `;
 
 export const Button = styled.button`
-  width: 200px;
-  padding: 10px;
+  padding: 2px;
+  border: 1px solid ${(props) => props.theme.colors.secundary};
+  background-color: ${(props) => props.theme.colors.background};
+  border-radius: 2px;
+  font-size: 0.8rem;
+  opacity: 1;
+  color: ${(props) => props.theme.colors.secundary};
+  cursor: pointer;
+  &:hover {
+    opacity: 0.7;
+  }
 `;
 
 export const WrapperArticles = styled.div`
@@ -48,19 +59,23 @@ export const WrapperArticlesCenter = styled.div`
 
 export const WrapperSelect = styled.div`
   display: flex;
+  margin-bottom: 20px;
 `;
 
 export const Select = styled.button`
+  padding: 2px;
+  border: 1px solid ${(props) => props.theme.colors.secundary};
+  background-color: ${(props) => props.theme.colors.background};
+  border-radius: 2px;
+  font-size: 0.8rem;
+  opacity: 1;
+  color: ${(props) => props.theme.colors.secundary};
   cursor: pointer;
-  text-decoration: none;
-  color: #c3c3c3;
-  margin-right: 15px;
-  &:hover {
-    color: #9b9b9b;
-  }
+  margin-right: 40px;
 
-  &:active {
-    color: black;
+  &:hover {
+    background-color: ${(props) => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.textWhite};
   }
 `;
 

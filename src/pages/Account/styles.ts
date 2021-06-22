@@ -15,7 +15,7 @@ export const TextPrimary = styled.h2`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 25%;
 `;
 
 export const Input = styled.input`
@@ -58,7 +58,7 @@ export const Button = styled.button`
   margin-top: 10px;
   padding: 15px;
   background-color: ${(props) => props.theme.colors.secundary};
-  color: ${(props) => props.theme.colors.textReverse};
+  color: ${(props) => props.theme.colors.text};
   border: none;
   border-radius: 16px;
   width: 40%;

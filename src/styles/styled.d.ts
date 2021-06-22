@@ -7,15 +7,12 @@ declare module 'styled-components' {
     colors: {
       primary: string;
       secundary: string;
-      primaryHover: string;
-
-      tertiary?: string;
 
       background: string;
-      backgroundHover: string;
+      backgroundHover?: string;
       text: string;
-      textReverse: string;
-      textHover?: string;
+      textLight: string;
+      textWhite?: string;
     };
   }
 }

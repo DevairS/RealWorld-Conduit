@@ -16,6 +16,7 @@ import {
   Tag,
   ButtonFavorited,
   Link,
+  FavoriteIcon,
 } from './styles';
 
 type Props = {
@@ -49,13 +50,13 @@ const Card: React.FC<Props> = ({
   const [countFavorited, setCountFavorited] = useState(favoritesCount);
 
   const handleChangeFavorited = (): void => {
-    favoritedArticle(slug, favoritedState);
     if (favoritedState) {
       setCountFavorited(countFavorited - 1);
     } else {
       setCountFavorited(countFavorited + 1);
     }
     setFavoritedState(!favoritedState);
+    favoritedArticle(slug, favoritedState);
   };
 
   return (
@@ -76,6 +77,7 @@ const Card: React.FC<Props> = ({
               onClick={handleChangeFavorited}
               favorited={favoritedState}
             >
+              <FavoriteIcon favorited={favoritedState} />
               {countFavorited}
             </ButtonFavorited>
           </WrapperFavorite>

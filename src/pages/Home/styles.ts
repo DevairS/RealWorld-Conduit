@@ -6,17 +6,17 @@ export const WrapperBanner = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${(props) => props.theme.colors.primary};
-  height: 200px;
+  height: 150px;
 `;
 
 export const TextMain = styled.h2`
-  color: ${(props) => props.theme.colors.textReverse};
+  color: ${(props) => props.theme.colors.textWhite};
   margin: 0;
   font-size: 2rem;
 `;
 
 export const TextSecondary = styled.p`
-  color: ${(props) => props.theme.colors.textReverse};
+  color: ${(props) => props.theme.colors.textWhite};
   margin: 0;
   font-size: 1.6rem;
 `;
@@ -29,7 +29,7 @@ export const WrapperMain = styled.div`
 
 export const WrapperLeft = styled.div`
   display: flex;
-  width: 25%;
+  width: 20%;
 `;
 
 export const WrapperCenter = styled.div`
@@ -45,28 +45,29 @@ export const WrapperSelect = styled.div`
 `;
 
 export const Select = styled.button`
+  padding: 2px;
+  border: 1px solid ${(props) => props.theme.colors.secundary};
+  background-color: ${(props) => props.theme.colors.background};
+  border-radius: 2px;
+  font-size: 0.8rem;
+  color: ${(props) => props.theme.colors.secundary};
   cursor: pointer;
-  background-color: transparent;
-  margin-right: 15px;
-  border: none;
-  font-size: 1rem;
+  margin-right: 40px;
 
   &:hover {
-    color: ${(props) => props.theme.colors.textHover};
-  }
-
-  &:active {
-    color: black;
+    background-color: ${(props) => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.textWhite};
   }
 `;
 
 export const WrapperRight = styled.div`
   display: flex;
   flex-direction: column;
-  width: 20%;
+  width: 15%;
   margin-right: 5%;
-  height: 150px;
-  border-radius: 16px;
+  height: 120px;
+  border-radius: 5px;
+  background-color: ${(props) => props.theme.colors.backgroundHover};
 `;
 
 export const Title = styled.p`
@@ -75,15 +76,16 @@ export const Title = styled.p`
 export const WrapperTags = styled.div`
   display: flex;
   flex-flow: row wrap;
+  margin-top: 10px;
   height: 100%;
 `;
 
 export const ButtonTags = styled.button`
   border: none;
-  border: 1px solid ${(props) => props.theme.colors.secundary};
+  border: 1px solid ${(props) => props.theme.colors.textLight};
   border-radius: 10px;
-  background-color: ${(props) => props.theme.colors.secundary};
-  color: ${(props) => props.theme.colors.text};
+  background-color: ${(props) => props.theme.colors.textLight};
+  color: ${(props) => props.theme.colors.textWhite};
   padding: 1px;
   margin: 1px;
 
