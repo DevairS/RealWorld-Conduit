@@ -5,18 +5,18 @@ export const WrapperBanner = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: green;
+  background-color: ${(props) => props.theme.colors.primary};
   height: 200px;
 `;
 
 export const TextMain = styled.h2`
-  color: #fff;
+  color: ${(props) => props.theme.colors.textReverse};
   margin: 0;
   font-size: 2rem;
 `;
 
 export const TextSecondary = styled.p`
-  color: #fff;
+  color: ${(props) => props.theme.colors.textReverse};
   margin: 0;
   font-size: 1.6rem;
 `;
@@ -41,15 +41,18 @@ export const WrapperCenter = styled.div`
 
 export const WrapperSelect = styled.div`
   display: flex;
+  margin-bottom: 30px;
 `;
 
 export const Select = styled.button`
   cursor: pointer;
-  text-decoration: none;
-  color: #c3c3c3;
+  background-color: transparent;
   margin-right: 15px;
+  border: none;
+  font-size: 1rem;
+
   &:hover {
-    color: #9b9b9b;
+    color: ${(props) => props.theme.colors.textHover};
   }
 
   &:active {
@@ -62,26 +65,29 @@ export const WrapperRight = styled.div`
   flex-direction: column;
   width: 20%;
   margin-right: 5%;
-  background-color: #f5f5f5;
-  height: 250px;
+  height: 150px;
   border-radius: 16px;
 `;
 
+export const Title = styled.p`
+  font-size: 1rem;
+`;
 export const WrapperTags = styled.div`
   display: flex;
   flex-flow: row wrap;
-  height: 200px;
+  height: 100%;
 `;
 
 export const ButtonTags = styled.button`
-  border: 1px solid grey;
-  border-radius: 12px;
-  background-color: grey;
-  color: #fff;
-  margin: 4px;
-  opacity: 1;
+  border: none;
+  border: 1px solid ${(props) => props.theme.colors.secundary};
+  border-radius: 10px;
+  background-color: ${(props) => props.theme.colors.secundary};
+  color: ${(props) => props.theme.colors.text};
+  padding: 1px;
+  margin: 1px;
 
   &:hover {
-    opacity: 0.8;
+    opacity: 0.7;
   }
 `;

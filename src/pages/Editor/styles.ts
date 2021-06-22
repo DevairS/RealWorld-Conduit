@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 60px;
 `;
 
 export const TextPrimary = styled.h2`
@@ -70,14 +71,16 @@ export const WrapperButton = styled.div`
 `;
 
 export const Button = styled.button`
+  margin-top: 10px;
   padding: 15px;
-  background-color: green;
-  color: #fff;
+  background-color: ${(props) => props.theme.colors.secundary};
+  color: ${(props) => props.theme.colors.textReverse};
+  border: none;
   border-radius: 16px;
   width: 25%;
   opacity: 1;
   &:hover {
-    opacity: 0.8;
+    opacity: 0.7;
   }
 `;
 
@@ -108,17 +111,18 @@ export const ListItem = styled.li`
   align-items: center;
   width: auto;
   height: 32px;
-  color: #fff;
-  background-color: green;
+  color: ${(props) => props.theme.colors.textReverse};
+  background-color: ${(props) => props.theme.colors.secundary};
   padding: 0px 8px;
   margin-left: 8px;
   border-radius: 12px;
   font-size: 14px;
   list-style: none;
+  cursor: pointer;
 `;
 
 export const TagName = styled.span`
-  margin-top: 4px;
+  margin: 0px;
 `;
 
 export const TagDelete = styled(IconButton)`
@@ -128,5 +132,6 @@ export const TagDelete = styled(IconButton)`
 `;
 
 export const IconDelete = styled(Cancel)`
-  color: #fff;
+  color: ${(props) => props.theme.colors.text};
+  font-size: 20px !important;
 `;

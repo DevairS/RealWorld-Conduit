@@ -4,22 +4,18 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 60px;
 `;
 
 export const TextPrimary = styled.h2`
   font-weight: bold;
-`;
-
-export const TextSecondary = styled.a`
-  cursor: pointer;
-  text-decoration: none;
-  color: green;
+  font-size: 1.8rem;
 `;
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  width: 25%;
+  width: 50%;
 `;
 
 export const Input = styled.input`
@@ -59,13 +55,15 @@ export const WrapperButton = styled.div`
 `;
 
 export const Button = styled.button`
+  margin-top: 10px;
   padding: 15px;
-  background-color: green;
-  color: #fff;
+  background-color: ${(props) => props.theme.colors.secundary};
+  color: ${(props) => props.theme.colors.textReverse};
+  border: none;
   border-radius: 16px;
-  width: 25%;
+  width: 40%;
   opacity: 1;
   &:hover {
-    opacity: 0.8;
+    opacity: 0.7;
   }
 `;

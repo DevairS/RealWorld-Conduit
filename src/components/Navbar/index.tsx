@@ -1,4 +1,7 @@
 import React, { useContext } from 'react';
+import Switch from 'react-switch';
+import { ThemeContext } from 'styled-components';
+import { shade } from 'polished';
 import {
   NavItemLinks,
   TextLogo,
@@ -12,6 +15,7 @@ import AuthContext from '../../Context/AuthContext';
 
 const Navbar: React.FC = () => {
   const { user, handleLogout } = useContext(AuthContext);
+  const { colors, title } = useContext(ThemeContext);
 
   return (
     <Wrapper>
@@ -35,6 +39,9 @@ const Navbar: React.FC = () => {
                 {user.username}
               </NavItemLinks>
             </li>
+            <Button type="button" onClick={handleLogout}>
+              Logout
+            </Button>
           </>
         ) : (
           MenuItems.map((item, index) => {
@@ -45,9 +52,18 @@ const Navbar: React.FC = () => {
             );
           })
         )}
-        <Button type="button" onClick={handleLogout}>
-          Logout
-        </Button>
+
+        {/* <Switch
+          onChange={toggleTheme}
+          checked={title === 'dark'}
+          checkedIcon={false}
+          uncheckedIcon={false}
+          height={10}
+          width={40}
+          handleDiameter={20}
+          offColor={shade(0.15, colors.primary)}
+          onColor={colors.secundary}
+        /> */}
       </WrapperItems>
     </Wrapper>
   );

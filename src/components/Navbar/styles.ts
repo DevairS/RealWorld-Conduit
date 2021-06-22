@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   justify-content: space-around;
   align-items: center;
   height: 70px;
+  background-color: ${(props) => props.theme.colors.primary};
 `;
 
 export const WrapperLogo = styled.div`
@@ -12,7 +13,7 @@ export const WrapperLogo = styled.div`
 `;
 
 export const TextLogo = styled.h1`
-  color: green;
+  color: ${(props) => props.theme.colors.textReverse};
   font-size: 1.4rem;
 `;
 
@@ -26,26 +27,22 @@ export const WrapperItems = styled.div`
 export const NavItemLinks = styled.a`
   cursor: pointer;
   text-decoration: none;
-  color: #c3c3c3;
+  color: ${(props) => props.theme.colors.textReverse};
   margin: 0px 10px;
   &:hover {
-    color: #9b9b9b;
-  }
-
-  &:active {
-    color: black;
+    color: ${(props) => props.theme.colors.textHover};
   }
 `;
 
 export const Button = styled.button`
-  background-color: green;
-  color: #fff;
+  background-color: ${(props) => props.theme.colors.secundary};
+  color: ${(props) => props.theme.colors.textReverse};
   padding: 5px;
-  opacity: 1;
-  border-radius: 12px;
+  border: none;
+  border-radius: 10px;
   width: 80px;
 
   &:hover {
-    opacity: 0.8;
+    opacity: 0.7;
   }
 `;

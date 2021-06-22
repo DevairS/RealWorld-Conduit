@@ -11,11 +11,11 @@ export const WrapperTop = styled.div`
 `;
 
 export const ArticleTitle = styled.h2`
-  color: #fff;
+  color: ${(props) => props.theme.colors.text};
 `;
 
 export const Author = styled.p`
-  color: #fff;
+  color: ${(props) => props.theme.colors.text};
   margin: 0px;
 `;
 

@@ -3,6 +3,7 @@ import React from 'react';
 import { SchemaOf } from 'yup';
 import { Footer, Navbar } from '../../components';
 import {
+  TextPrimary,
   Button,
   Form,
   Input,
@@ -27,7 +28,7 @@ const account: React.FC<Props> = ({
     <>
       <Navbar />
       <Wrapper>
-        <p>Sua conta</p>
+        <TextPrimary>Dados da sua conta</TextPrimary>
         <Formik
           initialValues={userLogged}
           onSubmit={submitForm}

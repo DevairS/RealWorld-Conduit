@@ -24,8 +24,8 @@ const Register: React.FC<Props> = ({ validationSchema, submitForm }) => {
     <>
       <Navbar />
       <Wrapper>
-        <TextPrimary>Sign in</TextPrimary>
-        <TextSecondary href="/login">Have an account</TextSecondary>
+        <TextPrimary>Cadastro</TextPrimary>
+        <TextSecondary href="/login">Entre com sua conta</TextSecondary>
         <Formik
           initialValues={{ username: '', email: '', password: '' }}
           onSubmit={submitForm}

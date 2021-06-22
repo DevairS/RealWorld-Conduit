@@ -2,11 +2,12 @@ import styled from 'styled-components';
 
 export const WrapperUser = styled.div`
   display: flex;
-  background-color: #f5f5f5;
+  background-color: ${(props) => props.theme.colors.background};
   height: 250px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: 60px;
 `;
 
 export const Image = styled.img`

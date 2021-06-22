@@ -4,7 +4,7 @@ export const MenuItems = [
     url: '/',
   },
   {
-    title: 'Login',
+    title: 'Entrar',
     url: '/login',
   },
   {

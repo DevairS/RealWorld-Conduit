@@ -25,7 +25,7 @@ declare type ArticlesList = {
 
 declare type ArticleCreate = {
   title: string;
-  body: string;
+  body?: string;
   description: string;
   tagList?: TagList;
 };

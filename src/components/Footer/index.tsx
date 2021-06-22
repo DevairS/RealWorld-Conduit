@@ -1,11 +1,14 @@
 import React from 'react';
 
-import { Wrapper } from './styles';
+import { Wrapper, Text, Link } from './styles';
 
 const Footer: React.FC = () => {
   return (
     <Wrapper>
-      <p>Text Footer</p>
+      <Text>
+        Desenvolvido por:
+        <Link href="https://github.com/DevairS"> Devair Augusto da Silva</Link>
+      </Text>
     </Wrapper>
   );
 };

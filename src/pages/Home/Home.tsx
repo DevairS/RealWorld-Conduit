@@ -13,6 +13,7 @@ import {
   ButtonTags,
   WrapperLeft,
   WrapperTags,
+  Title,
 } from './styles';
 
 type Props = {
@@ -42,7 +43,9 @@ const Home: React.FC<Props> = ({
       ) : (
         <WrapperBanner>
           <TextMain>Conduit</TextMain>
-          <TextSecondary>A place to share your knowledge.</TextSecondary>
+          <TextSecondary>
+            Um lugar para compartilhar seu conhecimento
+          </TextSecondary>
         </WrapperBanner>
       )}
 
@@ -77,7 +80,7 @@ const Home: React.FC<Props> = ({
               })}
             </WrapperCenter>
             <WrapperRight>
-              <p>Populares Tags</p>
+              <Title>Populares Tags</Title>
               <WrapperTags>
                 {tags?.map((item, index) => {
                   return (

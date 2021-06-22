@@ -15,6 +15,7 @@ import {
   WrapperTags,
   Tag,
   ButtonFavorited,
+  Link,
 } from './styles';
 
 type Props = {
@@ -42,48 +43,54 @@ const Card: React.FC<Props> = ({
   favoritedArticle,
   slug,
 }) => {
+  const user = localStorage.getItem('user');
   const date = createDate.split('T', 1);
   const [favoritedState, setFavoritedState] = useState(favorited);
   const [countFavorited, setCountFavorited] = useState(favoritesCount);
 
   const handleChangeFavorited = (): void => {
     favoritedArticle(slug, favoritedState);
-
     if (favoritedState) {
       setCountFavorited(countFavorited - 1);
     } else {
       setCountFavorited(countFavorited + 1);
     }
-
     setFavoritedState(!favoritedState);
   };
 
   return (
     <Wrapper>
       <WrapperTop>
-        <WrapperImage>
-          <Image src={userImg} alt="imageUser" width="50" height="50" />
-          <WrapperInfoUser>
-            <UserName>{userName}</UserName>
-            <DateCreate>{date}</DateCreate>
-          </WrapperInfoUser>
-        </WrapperImage>
-        <WrapperFavorite>
-          <ButtonFavorited
-            onClick={handleChangeFavorited}
-            favorited={favoritedState}
-          >
-            {countFavorited}
-          </ButtonFavorited>
-        </WrapperFavorite>
+        <Link href={`/profile/${userName}`}>
+          <WrapperImage>
+            <Image src={userImg} alt="User" width="50" height="50" />
+            <WrapperInfoUser>
+              <UserName>{userName}</UserName>
+              <DateCreate>{date}</DateCreate>
+            </WrapperInfoUser>
+          </WrapperImage>
+        </Link>
+        {user ? (
+          <WrapperFavorite>
+            <ButtonFavorited
+              onClick={handleChangeFavorited}
+              favorited={favoritedState}
+            >
+              {countFavorited}
+            </ButtonFavorited>
+          </WrapperFavorite>
+        ) : (
+          <div />
+        )}
       </WrapperTop>
-
       <WrapperBottom>
-        <TitleArticle>{userText1}</TitleArticle>
-        <DescriptionArticle>{userText2}</DescriptionArticle>
+        <Link href={`/article/${slug}`}>
+          <TitleArticle>{userText1}</TitleArticle>
+          <DescriptionArticle>{userText2}</DescriptionArticle>
+        </Link>
       </WrapperBottom>
-
       <WrapperTags>
+        <p>Tags:</p>
         {tags?.map((item, index) => {
           return <Tag key={index}>{item}</Tag>;
         })}

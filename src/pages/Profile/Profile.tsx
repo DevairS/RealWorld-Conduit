@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Footer, Navbar, Card } from '../../components';
 import {
   WrapperUser,
@@ -15,11 +15,14 @@ import {
 } from './styles';
 
 type Props = {
+  userLogged?: User;
   user?: Profile;
   articles?: Articles;
   searchFavoritedArticles(): void;
   searchMyArticles(user?: Profile): void;
   favoritedArticle(slug: string, state: boolean): void;
+  handleChangeFollow(username: string, state: boolean): void;
+  follow: boolean;
 };
 
 const Profile: React.FC<Props> = ({
@@ -28,6 +31,9 @@ const Profile: React.FC<Props> = ({
   searchFavoritedArticles,
   searchMyArticles,
   favoritedArticle,
+  userLogged,
+  handleChangeFollow,
+  follow,
 }) => {
   return (
     <>
@@ -37,9 +43,20 @@ const Profile: React.FC<Props> = ({
         <NameUser>{user?.username}</NameUser>
         <BioUser>{user?.bio}</BioUser>
         <WrapperEdit>
-          <a href="/settings">
-            <Button type="button">Edite seu perfil</Button>
-          </a>
+          {userLogged?.username === user?.username ? (
+            <a href="/settings">
+              <Button type="button">Edite seu perfil</Button>
+            </a>
+          ) : (
+            <Button
+              type="button"
+              onClick={() => {
+                user ? handleChangeFollow(user.username, user.following) : null;
+              }}
+            >
+              {follow ? 'Deixar de seguir' : 'Seguir'}
+            </Button>
+          )}
         </WrapperEdit>
       </WrapperUser>
       <WrapperArticles>

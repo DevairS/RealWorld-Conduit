@@ -46,8 +46,8 @@ const RoutesContainer: React.FC = () => {
         <LoggedRoute path={Routes.REGISTER} component={Register} />
         <PrivateRoute path={Routes.EDITOR} component={Editor} />
         <PrivateRoute path={Routes.ACCOUNT} component={Account} />
-        <PrivateRoute path={Routes.PROFILE} component={Profile} />
-        <PrivateRoute path={Routes.ARTICLE} component={Article} />
+        <Route path={Routes.PROFILE} component={Profile} />
+        <Route path={Routes.ARTICLE} component={Article} />
       </Switch>
     </BrowserRouter>
   );
