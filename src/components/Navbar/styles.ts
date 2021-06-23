@@ -22,10 +22,17 @@ export const TextLogo = styled.h1`
   font-weight: normal;
   color: ${(props) => props.theme.colors.text};
   font-size: 3rem;
+  @media (max-width: 375px) {
+    font-size: 2rem;
+  }
 `;
 
 export const LogoDot = styled.span`
   color: ${(props) => props.theme.colors.primary};
+  font-size: 3rem;
+  @media (max-width: 375px) {
+    font-size: 2rem;
+  }
 `;
 
 export const MenuIcon = styled.div`
@@ -40,6 +47,9 @@ export const MenuIcon = styled.div`
     right: 0;
     transform: translate(-100%, 60%);
   }
+  @media (max-width: 320px) {
+    top: -16px;
+  }
 `;
 
 export const NavLinks = styled.a<NavItemProps>`
@@ -51,16 +61,21 @@ export const NavLinks = styled.a<NavItemProps>`
   color: ${(props) => props.theme.colors.text};
   text-decoration: ${(props) => (props.actived ? 'underline' : 'none')};
   text-decoration-color: ${(props) => props.theme.colors.primary};
-  @media (max-width: 960px) {
-    text-align: center;
-    color: #fff;
-    padding: 2rem;
-    width: 100%;
-    display: table;
-  }
+
   &:hover {
     color: ${(props) => props.theme.colors.primary};
     transition: all 0.2s ease-out;
+  }
+
+  @media (max-width: 960px) {
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+    width: 100%;
+    display: table;
+  }
+  @media (max-width: 375px) {
+    font-size: 1rem;
   }
 `;
 

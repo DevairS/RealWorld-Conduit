@@ -27,6 +27,14 @@ export const Paper = styled(_Paper)`
   justify-content: center;
   padding: 40px;
   border-radius: 10px;
+  @media (max-width: 960px) {
+    width: 70%;
+    margin-bottom: 30px;
+  }
+  @media (max-width: 375px) {
+    width: 90%;
+    padding: 20px;
+  }
 `;
 
 export const Form = styled.form`

@@ -7,6 +7,9 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 60px;
+  @media (max-width: 375px) {
+    margin: 30px 0px 20px 0px;
+  }
 `;
 
 export const TextPrimary = styled.h2`
@@ -21,6 +24,13 @@ export const Paper = styled(_Paper)`
   justify-content: center;
   padding: 40px;
   border-radius: 10px;
+  @media (max-width: 960px) {
+    width: 70%;
+  }
+  @media (max-width: 375px) {
+    width: 90%;
+    padding: 20px;
+  }
 `;
 
 export const Form = styled.form`
@@ -37,6 +47,9 @@ export const InputTag = styled.input`
   border-radius: 16px;
   outline: none;
   background: transparent;
+  @media (max-width: 375px) {
+    width: 100%;
+  }
 `;
 
 export const TextErro = styled.p`
@@ -79,9 +92,15 @@ export const ListItem = styled.li`
   padding: 0px 8px;
   margin-left: 8px;
   border-radius: 12px;
-  font-size: 14px;
+  font-size: 0.9rem;
   list-style: none;
   cursor: pointer;
+  @media (max-width: 375px) {
+    font-size: 0.5rem;
+    height: 20px;
+    margin-left: 4px;
+    padding: 0px 4px;
+  }
 `;
 
 export const TagName = styled.span`

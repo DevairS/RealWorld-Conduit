@@ -59,6 +59,9 @@ export const WrapperArticlesCenter = styled.div`
   display: flex;
   width: 50%;
   flex-direction: column;
+  @media (max-width: 960px) {
+    width: 90%;
+  }
 `;
 
 export const WrapperSelect = styled.div`
@@ -79,6 +82,10 @@ export const Select = styled.button<ButtonProps>`
   &:hover {
     color: ${(props) => props.theme.colors.primary};
   }
+
+  @media (max-width: 375px) {
+    font-size: 1rem;
+  }
 `;
 
 export const Select2 = styled.button<ButtonProps>`
@@ -93,6 +100,10 @@ export const Select2 = styled.button<ButtonProps>`
   background-color: transparent;
   &:hover {
     color: ${(props) => props.theme.colors.primary};
+  }
+
+  @media (max-width: 375px) {
+    font-size: 1rem;
   }
 `;
 

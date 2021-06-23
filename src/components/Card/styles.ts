@@ -13,6 +13,10 @@ export const Wrapper = styled(Paper)`
   min-height: 180px;
   margin-bottom: 8px;
   padding: 8px;
+
+  @media (max-width: 375px) {
+    min-height: 150px;
+  }
 `;
 
 export const WrapperTop = styled.div`
@@ -73,10 +77,17 @@ export const TitleArticle = styled.p`
   margin: 0px;
   font-weight: bold;
   font-size: 1.4rem;
+
+  @media (max-width: 375px) {
+    font-size: 1.2rem;
+  }
 `;
 
 export const DescriptionArticle = styled.p`
   margin: 0px;
+  @media (max-width: 375px) {
+    font-size: 0.8rem;
+  }
 `;
 
 export const WrapperTags = styled.div`
@@ -93,6 +104,9 @@ export const Tag = styled.p`
   border-radius: 10px;
   color: ${(props) => props.theme.colors.primary};
   border: 1px solid ${(props) => props.theme.colors.primary};
+  @media (max-width: 375px) {
+    font-size: 0.5rem;
+  }
 `;
 
 export const ButtonFavorited = styled.button<PropsButtonFavorited>`

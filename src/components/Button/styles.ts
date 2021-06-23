@@ -13,4 +13,8 @@ export const ButtonA = styled.button`
   &:hover {
     opacity: 0.7;
   }
+  @media (max-width: 375px) {
+    padding: 8px;
+    font-size: 1rem;
+  }
 `;

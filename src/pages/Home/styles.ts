@@ -30,17 +30,27 @@ export const TextSecondary = styled.p`
   color: ${(props) => props.theme.colors.textWhite};
   margin: 0;
   font-size: 1.6rem;
+  @media (max-width: 375px) {
+    font-size: 1.2rem;
+    text-align: center;
+  }
 `;
 
 export const WrapperMain = styled.div`
   display: flex;
   width: 100%;
   margin-top: 80px;
+  @media (max-width: 375px) {
+    margin-top: 40px;
+  }
 `;
 
 export const WrapperLeft = styled.div`
   display: flex;
   width: 20%;
+  @media (max-width: 960px) {
+    display: none;
+  }
 `;
 
 export const WrapperCenter = styled.div`
@@ -48,11 +58,17 @@ export const WrapperCenter = styled.div`
   flex-direction: column;
   width: 50%;
   margin: 0% 2%;
+  @media (max-width: 960px) {
+    width: 100%;
+  }
 `;
 
 export const WrapperSelect = styled.div`
   display: flex;
   margin-bottom: 30px;
+  @media (max-width: 375px) {
+    margin-bottom: 15px;
+  }
 `;
 
 export const Select = styled.button<ButtonProps>`
@@ -68,6 +84,10 @@ export const Select = styled.button<ButtonProps>`
   &:hover {
     color: ${(props) => props.theme.colors.primary};
   }
+
+  @media (max-width: 375px) {
+    font-size: 1rem;
+  }
 `;
 
 export const Select2 = styled.button<ButtonProps>`
@@ -80,8 +100,13 @@ export const Select2 = styled.button<ButtonProps>`
   text-decoration: ${(props) => (props.actived ? 'none' : 'underline')};
   text-decoration-color: ${(props) => props.theme.colors.primary};
   background-color: transparent;
+
   &:hover {
     color: ${(props) => props.theme.colors.primary};
+  }
+
+  @media (max-width: 375px) {
+    font-size: 1rem;
   }
 `;
 
@@ -93,6 +118,9 @@ export const WrapperRight = styled.div`
   height: 120px;
   border-radius: 5px;
   margin-top: 45px;
+  @media (max-width: 960px) {
+    display: none;
+  }
 `;
 
 export const Title = styled.p`

@@ -12,12 +12,19 @@ export const WrapperTop = styled.div`
   height: 200px;
   justify-content: center;
   padding: 0px 350px;
+  @media (max-width: 960px) {
+    align-items: center;
+    padding: 0px;
+  }
 `;
 
 export const ArticleTitle = styled.h2`
   color: ${(props) => props.theme.colors.textWhite};
   font-size: 2rem;
   margin-bottom: 20px;
+  @media (max-width: 320px) {
+    font-size: 1.4rem;
+  }
 `;
 
 export const Author = styled.a`
@@ -51,6 +58,10 @@ export const ButtonFollow = styled.button`
     background-color: ${(props) => props.theme.colors.textLight};
     color: ${(props) => props.theme.colors.textWhite};
   }
+
+  @media (max-width: 320px) {
+    margin: 0px;
+  }
 `;
 
 export const ButtonFavorited = styled.button<ButtonProps>`
@@ -69,6 +80,10 @@ export const ButtonFavorited = styled.button<ButtonProps>`
       props.logged ? 'red' : props.theme.colors.primary};
     color: ${(props) => props.theme.colors.textWhite};
   }
+
+  @media (max-width: 320px) {
+    margin: 0px;
+  }
 `;
 
 export const Image = styled.img`
@@ -85,12 +100,18 @@ export const Body = styled.p`
   white-space: pre-wrap;
   font-size: 1.2rem;
   color: ${(props) => props.theme.colors.secondary};
+  @media (max-width: 960px) {
+    margin: 0px 10px;
+  }
 `;
 
 export const WrapperContent = styled.div`
   display: flex;
   flex-direction: column;
   width: 50%;
+  @media (max-width: 960px) {
+    width: 100%;
+  }
 `;
 
 export const WrapperTags = styled.div`

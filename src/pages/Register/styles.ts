@@ -7,6 +7,9 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 60px;
+  @media (max-width: 375px) {
+    margin: 30px 0px 20px 0px;
+  }
 `;
 
 export const TextPrimary = styled.h2`
@@ -28,6 +31,13 @@ export const Paper = styled(_Paper)`
   justify-content: center;
   padding: 40px;
   border-radius: 10px;
+  @media (max-width: 960px) {
+    width: 70%;
+  }
+  @media (max-width: 375px) {
+    width: 90%;
+    padding: 20px;
+  }
 `;
 
 export const Form = styled.form`

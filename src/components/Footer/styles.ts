@@ -10,6 +10,14 @@ export const Wrapper = styled.div`
   position: fixed;
   bottom: 0;
   font-size: 1.2rem;
+  @media (max-width: 960px) {
+    font-size: 1rem;
+    height: 30px;
+  }
+
+  @media (max-width: 375px) {
+    font-size: 0.8rem;
+  }
 `;
 
 export const Text = styled.p`
