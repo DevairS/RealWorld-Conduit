@@ -12,7 +12,6 @@ class TagApi {
   }
 
   getTags = async (): Promise<TagsList> => {
-    // ok
     try {
       const { data } = await request.get('/tags');
       return data.tags;

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { IconButton } from '@material-ui/core';
+import { IconButton, Paper as _Paper } from '@material-ui/core';
 import { Cancel } from '@material-ui/icons';
 
 export const Wrapper = styled.div`
@@ -13,16 +13,20 @@ export const TextPrimary = styled.h2`
   font-weight: bold;
 `;
 
-export const TextSecondary = styled.a`
-  cursor: pointer;
-  text-decoration: none;
-  color: green;
+export const Paper = styled(_Paper)`
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  border-radius: 10px;
 `;
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 100%;
 `;
 
 export const InputTag = styled.input`
@@ -42,6 +46,7 @@ export const TextErro = styled.p`
 export const WrapperButton = styled.div`
   display: flex;
   justify-content: flex-end;
+  margin-top: 15px;
 `;
 
 export const TagInputWrapper = styled.div`
@@ -52,11 +57,8 @@ export const TagInputWrapper = styled.div`
   border-radius: 5px;
   outline: none;
   margin-top: 10px;
-  border: 1px solid ${(props) => props.theme.colors.secundary};
-
-  &:hover {
-    border-color: #d6d8da;
-  }
+  border: 1px solid rgba(85, 94, 141, 0.2);
+  background-color: #fff;
 `;
 
 export const ListTags = styled.ul`

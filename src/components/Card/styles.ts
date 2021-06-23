@@ -1,16 +1,18 @@
 import styled from 'styled-components';
 import { Favorite } from '@material-ui/icons';
+import { Paper, Avatar as _Avatar } from '@material-ui/core';
 
 interface PropsButtonFavorited {
   favorited: boolean;
 }
-export const Wrapper = styled.div`
+export const Wrapper = styled(Paper)`
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
   min-height: 180px;
-  border-top: 1px solid ${(props) => props.theme.colors.secundary};
+  margin-bottom: 8px;
+  padding: 8px;
 `;
 
 export const WrapperTop = styled.div`
@@ -26,6 +28,13 @@ export const WrapperImage = styled.div`
 
 export const Image = styled.img`
   border-radius: 50%;
+`;
+
+export const Avatar = styled(_Avatar)`
+  &.MuiAvatar-root {
+    width: 50px;
+    height: 50px;
+  }
 `;
 
 export const WrapperInfoUser = styled.div`
@@ -54,7 +63,7 @@ export const WrapperBottom = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100%;
-  padding: 10px 10px 0px 10px;
+  padding: 10px 65px 0px 65px;
   &:hover {
     background-color: ${(props) => props.theme.colors.backgroundHover};
   }
@@ -72,16 +81,18 @@ export const DescriptionArticle = styled.p`
 
 export const WrapperTags = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
+  flex-flow: row wrap;
   margin: 0px 5px 5px 5px;
   align-items: center;
 `;
 
 export const Tag = styled.p`
-  margin: 2px;
-  padding: 1px 3px;
+  margin: 4px;
+  padding: 4px;
   border-radius: 10px;
-  border: 1px solid ${(props) => props.theme.colors.secundary};
+  color: ${(props) => props.theme.colors.primary};
+  border: 1px solid ${(props) => props.theme.colors.primary};
 `;
 
 export const ButtonFavorited = styled.button<PropsButtonFavorited>`

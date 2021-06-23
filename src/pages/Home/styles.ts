@@ -1,12 +1,23 @@
 import styled from 'styled-components';
 
+interface ButtonProps {
+  actived: boolean;
+}
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+`;
+
 export const WrapperBanner = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: ${(props) => props.theme.colors.primary};
-  height: 150px;
+  height: 20vh;
 `;
 
 export const TextMain = styled.h2`
@@ -44,19 +55,33 @@ export const WrapperSelect = styled.div`
   margin-bottom: 30px;
 `;
 
-export const Select = styled.button`
-  padding: 2px;
-  border: 1px solid ${(props) => props.theme.colors.secundary};
-  background-color: ${(props) => props.theme.colors.background};
-  border-radius: 2px;
-  font-size: 0.8rem;
-  color: ${(props) => props.theme.colors.secundary};
+export const Select = styled.button<ButtonProps>`
   cursor: pointer;
-  margin-right: 40px;
-
+  color: ${(props) => props.theme.colors.text};
+  border: none;
+  padding: 0px 10px;
+  white-space: pre;
+  font-size: 1.4rem;
+  text-decoration: ${(props) => (props.actived ? 'underline' : 'none')};
+  text-decoration-color: ${(props) => props.theme.colors.primary};
+  background-color: transparent;
   &:hover {
-    background-color: ${(props) => props.theme.colors.primary};
-    color: ${(props) => props.theme.colors.textWhite};
+    color: ${(props) => props.theme.colors.primary};
+  }
+`;
+
+export const Select2 = styled.button<ButtonProps>`
+  cursor: pointer;
+  color: ${(props) => props.theme.colors.text};
+  border: none;
+  padding: 0px 10px;
+  white-space: pre;
+  font-size: 1.4rem;
+  text-decoration: ${(props) => (props.actived ? 'none' : 'underline')};
+  text-decoration-color: ${(props) => props.theme.colors.primary};
+  background-color: transparent;
+  &:hover {
+    color: ${(props) => props.theme.colors.primary};
   }
 `;
 
@@ -67,7 +92,7 @@ export const WrapperRight = styled.div`
   margin-right: 5%;
   height: 120px;
   border-radius: 5px;
-  background-color: ${(props) => props.theme.colors.backgroundHover};
+  margin-top: 45px;
 `;
 
 export const Title = styled.p`
@@ -82,14 +107,21 @@ export const WrapperTags = styled.div`
 
 export const ButtonTags = styled.button`
   border: none;
-  border: 1px solid ${(props) => props.theme.colors.textLight};
   border-radius: 10px;
-  background-color: ${(props) => props.theme.colors.textLight};
+  background-color: #c2c2c2;
   color: ${(props) => props.theme.colors.textWhite};
-  padding: 1px;
+  padding: 4px;
   margin: 1px;
+  cursor: pointer;
 
   &:hover {
     opacity: 0.7;
   }
+`;
+
+export const WrapperLoading = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 72vh;
 `;

@@ -8,6 +8,7 @@ import {
   WrapperEdit,
   Button,
   Select,
+  Select2,
   WrapperArticles,
   WrapperArticlesCenter,
   WrapperSelect,
@@ -23,6 +24,7 @@ type Props = {
   favoritedArticle(slug: string, state: boolean): void;
   handleChangeFollow(username: string, state: boolean): void;
   follow: boolean;
+  activedButton: boolean;
 };
 
 const Profile: React.FC<Props> = ({
@@ -34,6 +36,7 @@ const Profile: React.FC<Props> = ({
   userLogged,
   handleChangeFollow,
   follow,
+  activedButton,
 }) => {
   return (
     <>
@@ -62,10 +65,15 @@ const Profile: React.FC<Props> = ({
       <WrapperArticles>
         <WrapperArticlesCenter>
           <WrapperSelect>
-            <Select onClick={() => searchMyArticles(user)}>
+            <Select
+              actived={activedButton}
+              onClick={() => searchMyArticles(user)}
+            >
               Artigos Publicados
             </Select>
-            <Select onClick={searchFavoritedArticles}>Artigos favoritos</Select>
+            <Select2 actived={activedButton} onClick={searchFavoritedArticles}>
+              Artigos favoritos
+            </Select2>
           </WrapperSelect>
           <WrapperCard>
             {articles?.length ? (

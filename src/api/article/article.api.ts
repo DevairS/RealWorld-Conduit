@@ -1,5 +1,4 @@
 import { ResponseError } from '../../utils';
-import showAlert from '../../utils/helpers/Alert';
 import request from '../request';
 
 class ArticleApi {
@@ -12,7 +11,6 @@ class ArticleApi {
     return ArticleApi.instance;
   }
 
-  // Authentication required
   createArticle = async (
     article: ArticleCreate,
     tags?: TagsList,
@@ -32,11 +30,9 @@ class ArticleApi {
     }
   };
 
-  // authentication no required
   listArticles = async (
     query?: Partial<QueryArticles>,
   ): Promise<ArticlesList> => {
-    // ok
     try {
       const { data } = await request.get('/articles', {
         params: query,
@@ -48,7 +44,6 @@ class ArticleApi {
   };
 
   feedArticle = async (): Promise<ArticlesList> => {
-    // ok
     try {
       const { data } = await request.get('/articles/feed');
       return data;
@@ -58,7 +53,6 @@ class ArticleApi {
   };
 
   favoritedArticle = async (slug: string): Promise<void> => {
-    // ok
     try {
       await request.post(`/articles/${slug}/favorite`);
     } catch (error) {
@@ -67,7 +61,6 @@ class ArticleApi {
   };
 
   unfavoritedArticle = async (slug: string): Promise<void> => {
-    // ok
     try {
       await request.delete(`/articles/${slug}/favorite`);
     } catch (error) {
@@ -76,7 +69,6 @@ class ArticleApi {
   };
 
   getArticle = async (slug: string): Promise<Article> => {
-    // ok
     try {
       const { data } = await request.get(`/articles/${slug}`);
       return data.article;
@@ -104,27 +96,9 @@ class ArticleApi {
     }
   };
 
-  // Authentication required
-  updateArticle = async (): Promise<void> => {
+  deleteArticle = async (slug: string): Promise<void> => {
     try {
-      const response = await request.put('/articles/:slug', {
-        articles: {
-          title: 'oi sou test',
-          description: 'somd',
-          body: 'huummdsdsdsds',
-        },
-      });
-      console.log('resposta updateArticle:', response);
-    } catch (error) {
-      throw new ResponseError(error);
-    }
-  };
-
-  // Authentication required
-  deleteArticle = async (): Promise<void> => {
-    try {
-      await request.delete('/articles/:slug');
-      console.log('delete');
+      await request.delete(`/articles/${slug}`);
     } catch (error) {
       throw new ResponseError(error);
     }

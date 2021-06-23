@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import {
   Image,
@@ -17,6 +17,7 @@ import {
   ButtonFavorited,
   Link,
   FavoriteIcon,
+  Avatar,
 } from './styles';
 
 type Props = {
@@ -48,6 +49,7 @@ const Card: React.FC<Props> = ({
   const date = createDate.split('T', 1);
   const [favoritedState, setFavoritedState] = useState(favorited);
   const [countFavorited, setCountFavorited] = useState(favoritesCount);
+  const [shouldUseAvatar, setShouldUseAvatar] = useState(false);
 
   const handleChangeFavorited = (): void => {
     if (favoritedState) {
@@ -59,12 +61,26 @@ const Card: React.FC<Props> = ({
     favoritedArticle(slug, favoritedState);
   };
 
+  const onError = useCallback(() => {
+    setShouldUseAvatar(true);
+  }, []);
+
   return (
-    <Wrapper>
+    <Wrapper elevation={3}>
       <WrapperTop>
         <Link href={`/profile/${userName}`}>
           <WrapperImage>
-            <Image src={userImg} alt="User" width="50" height="50" />
+            {shouldUseAvatar ? (
+              <Avatar alt="user" />
+            ) : (
+              <Image
+                src={userImg}
+                alt="User"
+                width="50"
+                height="50"
+                onError={onError}
+              />
+            )}
             <WrapperInfoUser>
               <UserName>{userName}</UserName>
               <DateCreate>{date}</DateCreate>
@@ -92,7 +108,6 @@ const Card: React.FC<Props> = ({
         </Link>
       </WrapperBottom>
       <WrapperTags>
-        <p>Tags:</p>
         {tags?.map((item, index) => {
           return <Tag key={index}>{item}</Tag>;
         })}

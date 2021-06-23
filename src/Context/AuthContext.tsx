@@ -1,14 +1,12 @@
 import React, { createContext, useEffect, useState } from 'react';
-// import { DefaultTheme } from 'styled-components';
 import { UserApi } from '../api';
+import { Loading } from '../components';
 import showAlert from '../utils/helpers/Alert';
 
 interface AuthContextData {
   user?: User;
   signIn(user: UserLogin): Promise<void>;
   handleLogout(): void;
-  // toggleTheme(): void;
-  // theme: DefaultTheme;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -17,13 +15,6 @@ export const AuthProvider: React.FC = ({ children }) => {
   const userApi = new UserApi();
   const [user, setUser] = useState<User>();
   const [loading, setLoading] = useState(true);
-
-  // const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', dark);
-
-  // const toggleTheme = (): void => {
-  //   console.log('theme dentro da função', theme);
-  //   setTheme(theme.title === 'dark' ? light : dark);
-  // };
 
   const signIn = async (user: UserLogin): Promise<void> => {
     try {
@@ -61,7 +52,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   }, []);
 
   if (loading) {
-    return <h1>Loading</h1>;
+    return <Loading />;
   }
 
   return (

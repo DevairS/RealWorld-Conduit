@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Paper as _Paper } from '@material-ui/core';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -9,13 +10,29 @@ export const Wrapper = styled.div`
 
 export const TextPrimary = styled.h2`
   font-weight: bold;
-  font-size: 1.8rem;
+`;
+
+export const TextSecondary = styled.p`
+  margin-top: 12px;
+  text-align: center;
+  color: ${(props) => props.theme.colors.textLight};
+  width: 70%;
+`;
+
+export const Paper = styled(_Paper)`
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  border-radius: 10px;
 `;
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  width: 25%;
+  width: 100%;
 `;
 
 export const Input = styled.input`
@@ -51,13 +68,14 @@ export const TextErro = styled.p`
 
 export const WrapperButton = styled.div`
   display: flex;
-  justify-content: flex-end;
+  margin-top: 24px;
+  width: 100%;
 `;
 
 export const Button = styled.button`
   margin-top: 10px;
   padding: 15px;
-  background-color: ${(props) => props.theme.colors.secundary};
+  background-color: ${(props) => props.theme.colors.secondary};
   color: ${(props) => props.theme.colors.text};
   border: none;
   border-radius: 16px;

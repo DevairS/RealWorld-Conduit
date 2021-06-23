@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ArticleApi, UserApi } from '../../api';
+import AuthContext from '../../Context/AuthContext';
 import showAlert from '../../utils/helpers/Alert';
 import Article from './Article';
 import { schemaValidation } from './validation';
 
 const ArticleContainer: React.FC = () => {
+  const { user } = useContext(AuthContext);
   const { slug } = useParams<ArticleRouteParams>();
   const articleApi = ArticleApi.getInstance();
   const userApi = UserApi.getInstance();
@@ -27,15 +29,16 @@ const ArticleContainer: React.FC = () => {
     }
   };
 
-  const handleChangeFollow = async (
-    username: string,
-    state: boolean,
-  ): Promise<void> => {
+  const handleChangeFollow = async (): Promise<void> => {
     try {
-      if (state) {
-        await userApi.unfollowUser(username);
-      } else {
-        await userApi.followUser(username);
+      if (article) {
+        if (article?.author.following) {
+          await userApi.unfollowUser(article.author.username);
+          showAlert({ message: 'Parou de seguir', type: 'success' });
+        } else {
+          await userApi.followUser(article.author.username);
+          showAlert({ message: 'Seguindo', type: 'success' });
+        }
       }
     } catch (error) {
       showAlert({ message: 'Erro no follow', type: 'error' });
@@ -53,6 +56,15 @@ const ArticleContainer: React.FC = () => {
     }
   };
 
+  const deleteArticle = async (slug: string): Promise<void> => {
+    try {
+      await articleApi.deleteArticle(slug);
+      showAlert({ message: 'Artigo deletado com sucesso', type: 'success' });
+    } catch (error) {
+      showAlert({ message: 'Erro ao deletar Artigo', type: 'error' });
+    }
+  };
+
   return (
     <Article
       validationSchema={schemaValidation}
@@ -60,6 +72,8 @@ const ArticleContainer: React.FC = () => {
       article={article}
       comments={commentsArticle}
       handleChangeFollow={handleChangeFollow}
+      userLogged={user}
+      deleteArticle={deleteArticle}
     />
   );
 };

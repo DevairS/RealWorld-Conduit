@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface ButtonProps {
+  actived: boolean;
+}
+
 export const WrapperUser = styled.div`
   display: flex;
   background-color: ${(props) => props.theme.colors.backgroundHover};
@@ -34,12 +38,12 @@ export const WrapperEdit = styled.div`
 
 export const Button = styled.button`
   padding: 2px;
-  border: 1px solid ${(props) => props.theme.colors.secundary};
+  border: 1px solid ${(props) => props.theme.colors.secondary};
   background-color: ${(props) => props.theme.colors.background};
   border-radius: 2px;
   font-size: 0.8rem;
   opacity: 1;
-  color: ${(props) => props.theme.colors.secundary};
+  color: ${(props) => props.theme.colors.secondary};
   cursor: pointer;
   &:hover {
     opacity: 0.7;
@@ -62,20 +66,33 @@ export const WrapperSelect = styled.div`
   margin-bottom: 20px;
 `;
 
-export const Select = styled.button`
-  padding: 2px;
-  border: 1px solid ${(props) => props.theme.colors.secundary};
-  background-color: ${(props) => props.theme.colors.background};
-  border-radius: 2px;
-  font-size: 0.8rem;
-  opacity: 1;
-  color: ${(props) => props.theme.colors.secundary};
+export const Select = styled.button<ButtonProps>`
   cursor: pointer;
-  margin-right: 40px;
-
+  color: ${(props) => props.theme.colors.text};
+  border: none;
+  padding: 0px 10px;
+  white-space: pre;
+  font-size: 1.4rem;
+  text-decoration: ${(props) => (props.actived ? 'underline' : 'none')};
+  text-decoration-color: ${(props) => props.theme.colors.primary};
+  background-color: transparent;
   &:hover {
-    background-color: ${(props) => props.theme.colors.primary};
-    color: ${(props) => props.theme.colors.textWhite};
+    color: ${(props) => props.theme.colors.primary};
+  }
+`;
+
+export const Select2 = styled.button<ButtonProps>`
+  cursor: pointer;
+  color: ${(props) => props.theme.colors.text};
+  border: none;
+  padding: 0px 10px;
+  white-space: pre;
+  font-size: 1.4rem;
+  text-decoration: ${(props) => (props.actived ? 'none' : 'underline')};
+  text-decoration-color: ${(props) => props.theme.colors.primary};
+  background-color: transparent;
+  &:hover {
+    color: ${(props) => props.theme.colors.primary};
   }
 `;
 

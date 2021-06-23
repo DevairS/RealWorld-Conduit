@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 import { Divider as _Divider } from '@material-ui/core';
 
+interface ButtonProps {
+  logged: boolean;
+}
+
 export const WrapperTop = styled.div`
-  background-color: ${(props) => props.theme.colors.secundary};
+  background-color: ${(props) => props.theme.colors.secondary};
   display: flex;
   flex-direction: column;
   height: 200px;
@@ -33,22 +37,11 @@ export const WrapperFollow = styled.div`
   }
 `;
 
-export const WrapperFollow2 = styled.div`
-  display: flex;
-  align-items: center;
-  p {
-    color: ${(props) => props.theme.colors.text};
-  }
-  a {
-    color: ${(props) => props.theme.colors.text};
-  }
-`;
-
 export const ButtonFollow = styled.button`
   margin-left: 30px;
   padding: 5px;
   border: 1px solid ${(props) => props.theme.colors.textLight};
-  background-color: ${(props) => props.theme.colors.secundary};
+  background-color: ${(props) => props.theme.colors.secondary};
   border-radius: 2px;
   font-size: 0.8rem;
   color: ${(props) => props.theme.colors.textLight};
@@ -60,18 +53,20 @@ export const ButtonFollow = styled.button`
   }
 `;
 
-export const ButtonFavorited = styled.button`
+export const ButtonFavorited = styled.button<ButtonProps>`
   margin-left: 30px;
   padding: 5px;
-  border: 1px solid ${(props) => props.theme.colors.primary};
-  background-color: ${(props) => props.theme.colors.secundary};
+  border: 1px solid
+    ${(props) => (props.logged ? 'red' : props.theme.colors.primary)};
+  background-color: ${(props) => props.theme.colors.secondary};
   border-radius: 2px;
   font-size: 0.8rem;
-  color: ${(props) => props.theme.colors.primary};
+  color: ${(props) => (props.logged ? 'red' : props.theme.colors.primary)};
   cursor: pointer;
 
   &:hover {
-    background-color: ${(props) => props.theme.colors.primary};
+    background-color: ${(props) =>
+      props.logged ? 'red' : props.theme.colors.primary};
     color: ${(props) => props.theme.colors.textWhite};
   }
 `;
@@ -89,7 +84,7 @@ export const WrapperBottom = styled.div`
 export const Body = styled.p`
   white-space: pre-wrap;
   font-size: 1.2rem;
-  color: ${(props) => props.theme.colors.secundary};
+  color: ${(props) => props.theme.colors.secondary};
 `;
 
 export const WrapperContent = styled.div`
@@ -104,7 +99,7 @@ export const WrapperTags = styled.div`
 `;
 
 export const Tag = styled.p`
-  border: 1px solid ${(props) => props.theme.colors.secundary};
+  border: 1px solid ${(props) => props.theme.colors.secondary};
   border-radius: 16px;
   padding: 5px;
   margin: 5px;

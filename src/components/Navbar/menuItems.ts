@@ -8,7 +8,7 @@ export const MenuItems = [
     url: '/login',
   },
   {
-    title: 'Cadastro',
+    title: 'Cadastrar',
     url: '/register',
   },
 ];

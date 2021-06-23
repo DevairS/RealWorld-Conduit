@@ -14,6 +14,7 @@ const ProfileContainer: React.FC = () => {
   const [articles, setArticles] = useState<Articles>();
   const [profile, setProfile] = useState<Profile>();
   const [follow, setFollow] = useState(false);
+  const [activedButton, setActivedButton] = useState(true);
 
   const { name } = useParams<ProfileRouteParams>();
 
@@ -37,6 +38,7 @@ const ProfileContainer: React.FC = () => {
       const response = await articleApi.listArticles({
         author: profile?.username,
       });
+      setActivedButton(true);
       setArticles(response.articles);
     } catch (error) {
       showAlert({ message: 'Artigo não encontrado', type: 'error' });
@@ -48,6 +50,7 @@ const ProfileContainer: React.FC = () => {
       const response = await articleApi.listArticles({
         favorited: profile?.username,
       });
+      setActivedButton(false);
       setArticles(response.articles);
     } catch (error) {
       showAlert({
@@ -101,6 +104,7 @@ const ProfileContainer: React.FC = () => {
       userLogged={user}
       handleChangeFollow={handleChangeFollow}
       follow={follow}
+      activedButton={activedButton}
     />
   );
 };

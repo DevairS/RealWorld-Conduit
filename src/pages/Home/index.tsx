@@ -8,13 +8,14 @@ const HomeContainer: React.FC = () => {
   const { user } = useContext(AuthContext);
   const tagApi = TagApi.getInstance();
   const articleApi = ArticleApi.getInstance();
-
   const [articles, setArticles] = useState<Articles>();
   const [tags, setTags] = useState<TagsList>();
+  const [activedButton, setActivedButton] = useState(true);
 
   const searchGlobalArticles = async (): Promise<void> => {
     try {
       const response = await articleApi.listArticles();
+      setActivedButton(true);
       setArticles(response.articles);
     } catch (error) {
       showAlert({ message: error.message, type: 'error' });
@@ -24,6 +25,7 @@ const HomeContainer: React.FC = () => {
   const searchFeedArticles = async (): Promise<void> => {
     try {
       const response = await articleApi.feedArticle();
+      setActivedButton(false);
       setArticles(response.articles);
     } catch (error) {
       showAlert({ message: error.message, type: 'error' });
@@ -77,6 +79,7 @@ const HomeContainer: React.FC = () => {
       searchGlobalArticles={searchGlobalArticles}
       favoritedArticle={favoritedArticle}
       changeArticles={changeArticles}
+      activedButton={activedButton}
     />
   );
 };

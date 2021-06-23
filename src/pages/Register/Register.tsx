@@ -10,6 +10,7 @@ import {
   TextSecondary,
   Wrapper,
   WrapperButton,
+  Paper,
 } from './styles';
 
 type Props = {
@@ -20,58 +21,61 @@ type Props = {
 const Register: React.FC<Props> = ({ validationSchema, submitForm }) => {
   return (
     <>
-      <Navbar />
+      <Navbar page="Cadastrar" />
       <Wrapper>
-        <TextPrimary>Cadastro</TextPrimary>
-        <TextSecondary href="/login">Entre com sua conta</TextSecondary>
-        <Formik
-          initialValues={{ username: '', email: '', password: '' }}
-          onSubmit={submitForm}
-          validationSchema={validationSchema}
-        >
-          {(props) => {
-            const { values, touched, errors, handleChange, handleSubmit } =
-              props;
-            return (
-              <Form onSubmit={handleSubmit}>
-                <Input
-                  id="username"
-                  placeholder="Username"
-                  type="username"
-                  value={values.username}
-                  onChange={handleChange}
-                />
-                {errors.username && touched.username && (
-                  <TextErro>{errors.username}</TextErro>
-                )}
-                <Input
-                  id="email"
-                  placeholder="email"
-                  type="text"
-                  value={values.email}
-                  onChange={handleChange}
-                />
-                {errors.email && touched.email && (
-                  <TextErro>{errors.email}</TextErro>
-                )}
-                <Input
-                  id="password"
-                  placeholder="password"
-                  type="password"
-                  value={values.password}
-                  onChange={handleChange}
-                />
-                {errors.password && touched.password && (
-                  <TextErro>{errors.password}</TextErro>
-                )}
+        <Paper elevation={4}>
+          <TextPrimary>Cadastro</TextPrimary>
 
-                <WrapperButton>
-                  <Button type="submit" text="Cadastrar" />
-                </WrapperButton>
-              </Form>
-            );
-          }}
-        </Formik>
+          <TextSecondary>Crie sua conta e já comece a postar!</TextSecondary>
+          <Formik
+            initialValues={{ username: '', email: '', password: '' }}
+            onSubmit={submitForm}
+            validationSchema={validationSchema}
+          >
+            {(props) => {
+              const { values, touched, errors, handleChange, handleSubmit } =
+                props;
+              return (
+                <Form onSubmit={handleSubmit}>
+                  <Input
+                    id="username"
+                    placeholder="Username"
+                    type="username"
+                    value={values.username}
+                    onChange={handleChange}
+                  />
+                  {errors.username && touched.username && (
+                    <TextErro>{errors.username}</TextErro>
+                  )}
+                  <Input
+                    id="email"
+                    placeholder="email"
+                    type="text"
+                    value={values.email}
+                    onChange={handleChange}
+                  />
+                  {errors.email && touched.email && (
+                    <TextErro>{errors.email}</TextErro>
+                  )}
+                  <Input
+                    id="password"
+                    placeholder="password"
+                    type="password"
+                    value={values.password}
+                    onChange={handleChange}
+                  />
+                  {errors.password && touched.password && (
+                    <TextErro>{errors.password}</TextErro>
+                  )}
+
+                  <WrapperButton>
+                    <Button type="submit" text="Cadastrar" />
+                  </WrapperButton>
+                </Form>
+              );
+            }}
+          </Formik>
+        </Paper>
       </Wrapper>
       <Footer />
     </>

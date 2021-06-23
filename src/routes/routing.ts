@@ -3,7 +3,7 @@ export enum Routes {
   LOGIN = '/login',
   REGISTER = '/register',
   ACCOUNT = '/settings',
-  EDITOR = '/editor',
+  EDITOR = '/editor/:slug',
   PROFILE = '/profile/:name',
   ARTICLE = '/article/:slug',
 }

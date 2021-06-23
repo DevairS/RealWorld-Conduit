@@ -2,7 +2,15 @@ import { Formik } from 'formik';
 import React from 'react';
 import { SchemaOf } from 'yup';
 import { Footer, Navbar, Input, Button, InputArea } from '../../components';
-import { TextPrimary, Form, TextErro, Wrapper, WrapperButton } from './styles';
+import {
+  TextPrimary,
+  Form,
+  TextErro,
+  Wrapper,
+  WrapperButton,
+  TextSecondary,
+  Paper,
+} from './styles';
 
 type Props = {
   userLogged: UserUpdate;
@@ -17,75 +25,82 @@ const account: React.FC<Props> = ({
 }) => {
   return (
     <>
-      <Navbar />
+      <Navbar page={userLogged.username} />
       <Wrapper>
-        <TextPrimary>Dados da sua conta</TextPrimary>
-        <Formik
-          initialValues={userLogged}
-          onSubmit={submitForm}
-          validationSchema={validationSchema}
-        >
-          {(props) => {
-            const { values, touched, errors, handleChange, handleSubmit } =
-              props;
-            return (
-              <Form onSubmit={handleSubmit}>
-                <Input
-                  id="image"
-                  placeholder="URL da sua foto de perfil"
-                  type="text"
-                  value={values.image}
-                  onChange={handleChange}
-                />
-                {errors.image && touched.image && (
-                  <TextErro>{errors.image}</TextErro>
-                )}
+        <Paper elevation={4}>
+          <TextPrimary>Dados da sua conta</TextPrimary>
+          <TextSecondary>
+            Aqui você pode alterar seu username, email, image, bio e senha
+          </TextSecondary>
+          <Formik
+            initialValues={userLogged}
+            onSubmit={submitForm}
+            validationSchema={validationSchema}
+          >
+            {(props) => {
+              const { values, touched, errors, handleChange, handleSubmit } =
+                props;
+              return (
+                <Form onSubmit={handleSubmit}>
+                  <Input
+                    id="image"
+                    placeholder="URL da sua foto de perfil"
+                    type="text"
+                    value={values.image}
+                    onChange={handleChange}
+                  />
+                  {errors.image && touched.image && (
+                    <TextErro>{errors.image}</TextErro>
+                  )}
 
-                <Input
-                  id="username"
-                  placeholder="Seu login"
-                  type="text"
-                  value={values.username}
-                  onChange={handleChange}
-                />
-                {errors.username && touched.username && (
-                  <TextErro>{errors.username}</TextErro>
-                )}
+                  <Input
+                    id="username"
+                    placeholder="Seu login"
+                    type="text"
+                    value={values.username}
+                    onChange={handleChange}
+                  />
+                  {errors.username && touched.username && (
+                    <TextErro>{errors.username}</TextErro>
+                  )}
 
-                <InputArea
-                  id="bio"
-                  placeholder="Um breve biografia sobre você"
-                  value={values.bio}
-                  onChange={handleChange}
-                />
-                {errors.bio && touched.bio && <TextErro>{errors.bio}</TextErro>}
-                <Input
-                  id="email"
-                  placeholder="Seu email"
-                  type="text"
-                  value={values.email}
-                  onChange={handleChange}
-                />
-                {errors.email && touched.email && (
-                  <TextErro>{errors.email}</TextErro>
-                )}
-                <Input
-                  id="password"
-                  placeholder="Nova senha"
-                  type="password"
-                  value={values.password}
-                  onChange={handleChange}
-                />
-                {errors.password && touched.password && (
-                  <TextErro>{errors.password}</TextErro>
-                )}
-                <WrapperButton>
-                  <Button type="submit" text="Confirme as mudanças" />
-                </WrapperButton>
-              </Form>
-            );
-          }}
-        </Formik>
+                  <InputArea
+                    id="bio"
+                    placeholder="Um breve biografia sobre você"
+                    value={values.bio}
+                    onChange={handleChange}
+                  />
+                  {errors.bio && touched.bio && (
+                    <TextErro>{errors.bio}</TextErro>
+                  )}
+                  <Input
+                    id="email"
+                    placeholder="Seu email"
+                    type="text"
+                    value={values.email}
+                    onChange={handleChange}
+                  />
+                  {errors.email && touched.email && (
+                    <TextErro>{errors.email}</TextErro>
+                  )}
+                  <Input
+                    id="password"
+                    placeholder="Nova senha"
+                    type="password"
+                    value={values.password}
+                    onChange={handleChange}
+                  />
+                  {errors.password && touched.password && (
+                    <TextErro>{errors.password}</TextErro>
+                  )}
+                  <WrapperButton>
+                    <Button type="submit" text="Confirme as mudanças" />
+                  </WrapperButton>
+                </Form>
+              );
+            }}
+          </Formik>
+        </Paper>
       </Wrapper>
       <Footer />
     </>
